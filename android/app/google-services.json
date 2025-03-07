@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "761949111324",
+    "project_id": "tabkha-1f176",
+    "storage_bucket": "tabkha-1f176.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761949111324:android:cc975bbbd8c56669324bd9",
+        "android_client_info": {
+          "package_name": "com.example.tabkha_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASSD-lwoTEA4w1w6gZV6I60kfHVWgbQUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

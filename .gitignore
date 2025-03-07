@@ -1,0 +1,25 @@
+# Flutter
+.dart_tool/
+.build/
+.idea/
+android/.gradle/
+android/key.jks
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.podspec
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+lib/generated_plugin_registrant.dart
+
+# VS Code
+.vscode/
+
+# Flutter dependencies
+pubspec.lock
+.env
+
+# Misc
+*.iml
+*.swp
+.DS_Store
+*.log
