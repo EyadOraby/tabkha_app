@@ -51,6 +51,11 @@ h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin-bottom:12px}
 footer{padding:32px 0;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 @media (max-width:860px){.hero{grid-template-columns:1fr;padding-top:16px}.grid{grid-template-columns:1fr}nav .links{display:none}.browser iframe{height:520px}.cta{padding:32px 20px}}
 @media (max-width:380px){.phone{width:100%;height:600px}}
+.live{position:relative}
+.live img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:34px}
+.shot img{border-radius:0;height:auto}
+.shot iframe{display:block;width:100%;height:640px;border:0}
+.live button{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);border:0;cursor:pointer;font:inherit;font-weight:700;padding:12px 20px;border-radius:999px;background:var(--brand);color:#fff;white-space:nowrap;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
 </style>
 </head>
 <body>
@@ -70,7 +75,7 @@ footer{padding:32px 0;color:var(--muted);font-size:14px;display:flex;justify-con
         <a class="btn ghost" href="https://github.com/EyadOraby/tabkha_app/releases/download/android/tabkha.apk">⬇ Android app</a>
       </div>
     </div>
-    <div class="phone"><iframe src="app/?screen=home" title="Tabkha app" loading="lazy"></iframe></div>
+    <div class="phone live" data-src="app/?screen=home" data-title="Tabkha app"><img src="img/phone.jpg" alt="Tabkha app screenshot"><button type="button">▶ Try it live here</button></div>
   </header>
 </div>
 <section id="features"><div class="wrap">
@@ -88,7 +93,7 @@ footer{padding:32px 0;color:var(--muted);font-size:14px;display:flex;justify-con
 <section id="dashboard"><div class="wrap">
   <h2>Dashboards for restaurants and admins</h2>
   <p class="sub">On a wide screen the dashboards use a side rail; on a phone they switch to bottom tabs. Try the platform view at <a href="app/?screen=superadmin">?screen=superadmin</a>.</p>
-  <div class="browser"><div class="bar"><i></i><i></i><i></i></div><iframe src="app/?screen=admin" title="Tabkha restaurant dashboard" loading="lazy"></iframe></div>
+  <div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="live shot" data-src="app/?screen=admin" data-title="Tabkha restaurant dashboard"><img src="img/dashboard.jpg" alt="Tabkha restaurant dashboard screenshot"><button type="button">▶ Open it live here</button></div></div>
 </div></section>
 <section id="tech"><div class="wrap">
   <h2>How it's built</h2>
@@ -99,5 +104,13 @@ footer{padding:32px 0;color:var(--muted);font-size:14px;display:flex;justify-con
   <div class="cta"><h2>Hungry?</h2><p>The demo comes with restaurants, menus, reviews and orders, so every screen has something in it.</p><a class="btn" href="app/?screen=home">Open Tabkha</a></div>
 </div></section>
 <div class="wrap"><footer><span>Tabkha by Eyad Oraby</span><a href="https://github.com/EyadOraby/tabkha_app">Source on GitHub</a></footer></div>
+<script>
+document.querySelectorAll('.live').forEach(function(box){
+  box.querySelector('button').addEventListener('click',function(){
+    var f=document.createElement('iframe');f.src=box.dataset.src;f.title=box.dataset.title;
+    box.innerHTML='';box.appendChild(f);
+  });
+});
+</script>
 </body>
 </html>
