@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tabkha_app/Features/Authentication/Views/language_view.dart';
-import 'package:tabkha_app/Features/Authentication/Views/login_view.dart';
 import 'package:tabkha_app/Features/Authentication/authentication_view_model.dart';
 import 'package:tabkha_app/Features/Home/Views/home_view.dart';
 import 'package:tabkha_app/Services/navigation_services.dart';

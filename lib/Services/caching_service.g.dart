@@ -6,22 +6,46 @@ part of 'caching_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cachingServiceHash() => r'19786c9e197ef74f22bc13fd701a34d49643ea4b';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [cachingService].
 @ProviderFor(cachingService)
-final cachingServiceProvider = Provider<CachingService>.internal(
-  cachingService,
-  name: r'cachingServiceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$cachingServiceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final cachingServiceProvider = CachingServiceProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CachingServiceRef = ProviderRef<CachingService>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class CachingServiceProvider
+    extends $FunctionalProvider<CachingService, CachingService, CachingService>
+    with $Provider<CachingService> {
+  CachingServiceProvider._()
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'cachingServiceProvider',
+          isAutoDispose: false,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
+
+  @override
+  String debugGetCreateSourceHash() => _$cachingServiceHash();
+
+  @$internal
+  @override
+  $ProviderElement<CachingService> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  CachingService create(Ref ref) {
+    return cachingService(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CachingService value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CachingService>(value),
+    );
+  }
+}
+
+String _$cachingServiceHash() => r'a646f97efa224a47ca7da8637b50cee0d9d1be50';

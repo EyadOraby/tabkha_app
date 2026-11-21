@@ -8,7 +8,7 @@ part of 'user_preferences.dart';
 
 class UserPreferencesAdapter extends TypeAdapter<UserPreferences> {
   @override
-  final int typeId = 0;
+  final typeId = 0;
 
   @override
   UserPreferences read(BinaryReader reader) {
@@ -42,7 +42,7 @@ class UserPreferencesAdapter extends TypeAdapter<UserPreferences> {
 
 class AppModeAdapter extends TypeAdapter<AppMode> {
   @override
-  final int typeId = 1;
+  final typeId = 1;
 
   @override
   AppMode read(BinaryReader reader) {
@@ -59,7 +59,6 @@ class AppModeAdapter extends TypeAdapter<AppMode> {
     switch (obj) {
       case AppMode.lightMode:
         writer.writeByte(1);
-        break;
     }
   }
 
@@ -76,7 +75,7 @@ class AppModeAdapter extends TypeAdapter<AppMode> {
 
 class LanguageCodeEnumAdapter extends TypeAdapter<LanguageCodeEnum> {
   @override
-  final int typeId = 2;
+  final typeId = 2;
 
   @override
   LanguageCodeEnum read(BinaryReader reader) {
@@ -95,10 +94,8 @@ class LanguageCodeEnumAdapter extends TypeAdapter<LanguageCodeEnum> {
     switch (obj) {
       case LanguageCodeEnum.en:
         writer.writeByte(0);
-        break;
       case LanguageCodeEnum.ar:
         writer.writeByte(1);
-        break;
     }
   }
 

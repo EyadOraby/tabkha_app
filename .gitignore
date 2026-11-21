@@ -9,7 +9,6 @@ ios/.symlinks/
 ios/Flutter/Flutter.podspec
 ios/Flutter/App.framework
 ios/Flutter/Flutter.framework
-lib/generated_plugin_registrant.dart
 
 # VS Code
 .vscode/
@@ -23,3 +22,7 @@ pubspec.lock
 *.swp
 .DS_Store
 *.log
+
+# Build output
+/build/
+.flutter-plugins-dependencies

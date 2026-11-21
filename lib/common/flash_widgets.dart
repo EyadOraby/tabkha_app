@@ -2,7 +2,6 @@ import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
-import '../constants/app_fonts.dart';
 
 class FlashWidgets {
   static void showNetworkErrorBar({
