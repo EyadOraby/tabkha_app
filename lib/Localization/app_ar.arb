@@ -30,5 +30,20 @@
   "createAccount": "إنشاء حساب",
   "location": "الموقع",
   "searchHere": "ابحث هنا",
-  "signOut": "تسجيل الخروج"
+  "signOut": "تسجيل الخروج",
+  "whatToCook": "ماذا تريد أن تطبخ اليوم؟",
+  "searchRecipes": "ابحث عن وصفة",
+  "categories": "الأقسام",
+  "popularIn": "الأشهر في {category}",
+  "resultsFor": "نتائج “{query}”",
+  "noRecipesFound": "لا توجد وصفات. جرّب بحثًا آخر.",
+  "couldNotLoadRecipes": "تعذّر تحميل الوصفات. تحقق من اتصالك وحاول مرة أخرى.",
+  "tryAgain": "حاول مرة أخرى",
+  "ingredients": "المكونات",
+  "steps": "الخطوات",
+  "continueAsGuest": "المتابعة كضيف",
+  "changeLanguage": "تغيير اللغة",
+  "addToFavorites": "أضف إلى المفضلة",
+  "removeFromFavorites": "أزل من المفضلة",
+  "recipeNotFound": "هذه الوصفة لم تعد متاحة."
 }

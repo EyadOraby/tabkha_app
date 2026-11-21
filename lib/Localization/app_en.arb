@@ -24,12 +24,40 @@
   "pleaseEnterYourName": "Please enter your name",
   "username": "Username",
   "pleaseEnterYourUserName": "Please enter your username",
-  "password": "Password",
   "repeatPassword": "Repeat Password",
   "pleaseConfirmYourPassword": "Please confirm your password",
   "passwordsDoNotMatch": "Passwords do not match",
   "createAccount": "Create Account",
   "location": "Location",
   "searchHere": "Search here",
-  "signOut": "Sign Out"
+  "signOut": "Sign Out",
+  "whatToCook": "What would you like to cook today?",
+  "searchRecipes": "Search recipes",
+  "categories": "Categories",
+  "popularIn": "Popular in {category}",
+  "@popularIn": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "resultsFor": "Results for “{query}”",
+  "@resultsFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "noRecipesFound": "No recipes found. Try another search.",
+  "couldNotLoadRecipes": "Couldn't load recipes. Check your connection and try again.",
+  "tryAgain": "Try again",
+  "ingredients": "Ingredients",
+  "steps": "Steps",
+  "continueAsGuest": "Continue as guest",
+  "changeLanguage": "Change language",
+  "addToFavorites": "Add to favourites",
+  "removeFromFavorites": "Remove from favourites",
+  "recipeNotFound": "This recipe is no longer available."
 }
