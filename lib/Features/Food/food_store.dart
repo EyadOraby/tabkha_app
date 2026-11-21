@@ -368,5 +368,23 @@ List<FoodOrder> seedOrders(List<MenuItem> menu, DateTime now) {
       n++;
     }
   });
+  // Two of "your" orders: one on its way, one delivered and waiting for a review.
+  final mineFrom = [byRestaurant['r2'], byRestaurant['r3']].whereType<List<MenuItem>>().toList();
+  for (var i = 0; i < mineFrom.length; i++) {
+    final items = mineFrom[i];
+    orders.add(FoodOrder(
+      id: 'TB-${3990 + i}',
+      restaurantId: items.first.restaurantId,
+      customer: 'You',
+      address: '6 Ibn Malek St, Giza',
+      lines: [
+        OrderLine(itemId: items[0].id, name: items[0].name, price: items[0].price, quantity: 2),
+        if (items.length > 1) OrderLine(itemId: items[1].id, name: items[1].name, price: items[1].price, quantity: 1),
+      ],
+      deliveryFee: 15,
+      status: i == 0 ? OrderStatus.onTheWay : OrderStatus.delivered,
+      createdAt: now.subtract(Duration(minutes: i == 0 ? 18 : 60 * 26)),
+    ));
+  }
   return orders;
 }

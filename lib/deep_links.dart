@@ -28,6 +28,8 @@ Widget? deepLinkedScreen([Uri? url]) {
       return const Scaffold(body: SafeArea(child: RecipesView()));
     case 'orders':
       return const HomeView(initialTab: 2);
+    case 'account':
+      return const HomeView(initialTab: 3);
     case 'restaurant':
       return RestaurantView(restaurantId: params['id'] ?? 'r1');
     case 'admin':

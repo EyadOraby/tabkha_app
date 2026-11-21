@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
+import 'package:tabkha_app/Features/Food/Views/account_view.dart';
 import 'package:tabkha_app/Features/Food/Views/admin_views.dart';
 import 'package:tabkha_app/Features/Food/Views/customer_views.dart';
 import 'package:tabkha_app/Features/Food/Widgets/food_ui.dart';
@@ -41,28 +42,66 @@ class _CustomerShellState extends ConsumerState<CustomerShell> {
   @override
   Widget build(BuildContext context) {
     final active = ref.watch(foodProvider.select((s) => s.myOrders.where((o) => o.status.isActive).length));
+    final wide = MediaQuery.sizeOf(context).width >= 900;
+    final tabs = [
+      (Icons.delivery_dining_outlined, Icons.delivery_dining, context.t('Order food'), 0),
+      (Icons.menu_book_outlined, Icons.menu_book, context.t('Recipes'), 0),
+      (Icons.receipt_long_outlined, Icons.receipt_long, context.t('Orders'), active),
+      (Icons.person_outline, Icons.person, context.t('Account'), 0),
+    ];
+    final body = IndexedStack(
+      index: _index,
+      children: const [DiscoverView(), RecipesView(), MyOrdersView(), AccountView()],
+    );
+    if (wide) {
+      return Scaffold(
+        backgroundColor: cream,
+        body: SafeArea(
+          child: Row(children: [
+            NavigationRail(
+              backgroundColor: Colors.white,
+              extended: MediaQuery.sizeOf(context).width >= 1200,
+              indicatorColor: green.withValues(alpha: 0.14),
+              selectedIndex: _index,
+              onDestinationSelected: (i) => setState(() => _index = i),
+              leading: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 18),
+                child: Text('Tabkha', style: TextStyle(fontFamily: 'Lobster', fontSize: 26, color: green)),
+              ),
+              destinations: [
+                for (final (icon, selected, label, badge) in tabs)
+                  NavigationRailDestination(
+                    icon: Badge(isLabelVisible: badge > 0, label: Text('$badge'), child: Icon(icon)),
+                    selectedIcon: Icon(selected),
+                    label: Text(label),
+                  ),
+              ],
+            ),
+            const VerticalDivider(width: 1),
+            Expanded(
+              child: Center(
+                child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 1180), child: body),
+              ),
+            ),
+          ]),
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: cream,
-      body: SafeArea(
-        child: IndexedStack(
-          index: _index,
-          children: const [DiscoverView(), RecipesView(), MyOrdersView(), AccountView()],
-        ),
-      ),
+      body: SafeArea(child: body),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,
         indicatorColor: green.withValues(alpha: 0.14),
         selectedIndex: _index,
         onDestinationSelected: (i) => setState(() => _index = i),
         destinations: [
-          NavigationDestination(icon: Icon(Icons.delivery_dining_outlined), selectedIcon: Icon(Icons.delivery_dining), label: context.t('Order food')),
-          NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: context.t('Recipes')),
-          NavigationDestination(
-            icon: Badge(isLabelVisible: active > 0, label: Text('$active'), child: Icon(Icons.receipt_long_outlined)),
-            selectedIcon: Icon(Icons.receipt_long),
-            label: context.t('Orders'),
-          ),
-          NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person), label: context.t('Account')),
+          for (final (icon, selected, label, badge) in tabs)
+            NavigationDestination(
+              icon: Badge(isLabelVisible: badge > 0, label: Text('$badge'), child: Icon(icon)),
+              selectedIcon: Icon(selected),
+              label: label,
+            ),
         ],
       ),
     );

@@ -130,6 +130,26 @@ const foodArabic = <String, String>{
   'Restaurant': 'المطعم',
   'Items': 'الأصناف',
   'Status': 'الحالة',
+  // Sign in and account
+  'Welcome back': 'أهلًا بعودتك',
+  'Sign in to order, track and review.': 'سجّل الدخول لتطلب وتتابع وتقيّم.',
+  'Try a demo account': 'جرّب حسابًا تجريبيًا',
+  'Order food, track it and leave reviews': 'اطلب الأكل وتابعه واترك تقييمك',
+  'Run Koshary El Tahrir: orders, menu, reviews': 'أدر كشري التحرير: الطلبات والقائمة والتقييمات',
+  'Approve restaurants and watch the platform': 'وافق على المطاعم وتابع المنصة',
+  'Restaurants near you, delivered hot': 'مطاعم قريبة منك توصلك سخنة',
+  'Recipes with ingredients and steps': 'وصفات بالمكونات والخطوات',
+  'English and Arabic': 'عربي وإنجليزي',
+  'Demo customer': 'عميل تجريبي',
+  'Spent': 'المصروف',
+  'Demo mode: switch sides to see the whole product.': 'الوضع التجريبي: بدّل الأدوار لترى المنتج كاملًا.',
+  'Language': 'اللغة',
+  'Saved address': 'العنوان المحفوظ',
+  'Payment': 'الدفع',
+  'Cash on delivery': 'الدفع عند الاستلام',
+  'Demo data restored': 'تمت استعادة البيانات التجريبية',
+  'Sign out': 'تسجيل الخروج',
+  'Recent orders': 'أحدث الطلبات',
 };
 
 extension FoodTr on BuildContext {

@@ -4,8 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/Features/Food/Widgets/food_ui.dart';
 import 'package:tabkha_app/Features/Food/food_store.dart';
-import 'package:tabkha_app/Services/preferences_service.dart';
-import 'package:tabkha_app/commonModels/user_preferences.dart';
 import 'package:tabkha_app/constants/app_colors.dart';
 
 const green = AppColors.greenBackground;
@@ -83,10 +81,15 @@ class _DiscoverViewState extends ConsumerState<DiscoverView> {
           ]),
         ),
         SliverPadding(
-          padding: EdgeInsets.fromLTRB(20, 0, 20, 24),
-          sliver: SliverList.separated(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+          sliver: SliverGrid.builder(
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 440,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              mainAxisExtent: 268,
+            ),
             itemCount: list.length,
-            separatorBuilder: (_, __) => SizedBox(height: 16),
             itemBuilder: (_, i) => RestaurantCard(restaurant: list[i]),
           ),
         ),
@@ -139,7 +142,7 @@ class _ActiveOrderBanner extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('${context.t('Your order is')} ${context.t(order.status.label)}',
+                Text('${context.t('Your order is')} ${context.isArabic ? context.t(order.status.label) : order.status.label.toLowerCase()}',
                     style: TextStyle(fontFamily: 'Montserrat', color: Colors.white, fontWeight: FontWeight.w800)),
                 Text('${restaurant?.name ?? ''} · ${context.t('about')} ${restaurant?.deliveryMinutes ?? 30} ${context.t('min')}',
                     style: TextStyle(fontFamily: 'Montserrat', color: Colors.white70, fontSize: 12.5)),
@@ -255,7 +258,8 @@ class RestaurantView extends ConsumerWidget {
             ),
           ),
           SliverPadding(
-            padding: EdgeInsets.fromLTRB(20, 16, 20, 110),
+            padding: EdgeInsets.fromLTRB(
+              _side(context), 16, _side(context), 110),
             sliver: SliverList.list(children: [
               Wrap(
                 spacing: 10,
@@ -271,8 +275,14 @@ class RestaurantView extends ConsumerWidget {
               ),
               for (final section in sections) ...[
                 SectionTitle(context.t(section)),
-                for (final item in menu.where((m) => m.section == section))
-                  Padding(padding: EdgeInsets.only(bottom: 12), child: _MenuRow(item: item, open: r.isOpen)),
+                LayoutBuilder(builder: (context, c) {
+                  final cols = c.maxWidth >= 720 ? 2 : 1;
+                  final w = (c.maxWidth - (cols - 1) * 12) / cols;
+                  return Wrap(spacing: 12, runSpacing: 12, children: [
+                    for (final item in menu.where((m) => m.section == section))
+                      SizedBox(width: w, child: _MenuRow(item: item, open: r.isOpen)),
+                  ]);
+                }),
               ],
               SectionTitle(context.t('Reviews'), trailing: Text('${reviews.length}', style: bodyStyle)),
               for (final review in reviews.take(6))
@@ -611,6 +621,7 @@ class OrderCard extends ConsumerWidget {
                 ),
               if (order.status == OrderStatus.delivered && !order.reviewed)
                 FilledButton.tonalIcon(
+                  style: FilledButton.styleFrom(backgroundColor: saffron.withValues(alpha: 0.18), foregroundColor: ink),
                   onPressed: () => showReviewDialog(context, ref, order),
                   icon: Icon(Icons.star_outline_rounded),
                   label: Text(context.t('Rate this order')),
@@ -689,58 +700,6 @@ class MyOrdersView extends ConsumerWidget {
   }
 }
 
-/// Profile, language, role switch (demo) and reset.
-class AccountView extends ConsumerWidget {
-  const AccountView({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final food = ref.watch(foodProvider);
-    final prefs = ref.watch(preferencesStateProvider);
-    return ListView(
-      padding: EdgeInsets.fromLTRB(20, 16, 20, 24),
-      children: [
-        Text(context.t('Account'), style: titleStyle.copyWith(fontSize: 26)),
-        SizedBox(height: 16),
-        Panel(
-          child: Row(children: [
-            CircleAvatar(radius: 28, backgroundColor: green, child: Icon(Icons.person, color: Colors.white, size: 30)),
-            SizedBox(width: 14),
-            Expanded(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(context.t('Guest'), style: titleStyle.copyWith(fontSize: 17)),
-                Text('${food.myOrders.length} ${context.t('orders')} · Giza', style: bodyStyle.copyWith(fontSize: 13)),
-              ]),
-            ),
-          ]),
-        ),
-        SectionTitle(context.t('View the app as')),
-        RoleSwitcher(current: food.role),
-        SectionTitle(context.t('Preferences')),
-        Panel(
-          padding: EdgeInsets.zero,
-          child: Column(children: [
-            SwitchListTile(
-              secondary: Icon(Icons.translate_rounded),
-              title: Text('العربية'),
-              value: prefs.language == LanguageCodeEnum.ar,
-              activeThumbColor: green,
-              onChanged: (ar) => ref
-                  .read(preferencesStateProvider.notifier)
-                  .updatePreferences(languageCodeEnum: ar ? LanguageCodeEnum.ar : LanguageCodeEnum.en),
-            ),
-            ListTile(
-              leading: Icon(Icons.restart_alt_rounded),
-              title: Text(context.t('Reset demo data')),
-              onTap: () => ref.read(foodProvider.notifier).reset(),
-            ),
-          ]),
-        ),
-      ],
-    );
-  }
-}
-
 class RoleSwitcher extends ConsumerWidget {
   const RoleSwitcher({super.key, required this.current});
   final AppRole current;
@@ -761,4 +720,11 @@ class RoleSwitcher extends ConsumerWidget {
       onSelectionChanged: (s) => ref.read(foodProvider.notifier).setRole(s.first),
     );
   }
+}
+
+
+/// Side padding that keeps content to a readable width on large screens.
+double _side(BuildContext context) {
+  final w = MediaQuery.sizeOf(context).width;
+  return w > 1000 ? (w - 960) / 2 : 20;
 }
