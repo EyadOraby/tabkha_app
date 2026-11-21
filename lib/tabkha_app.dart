@@ -52,9 +52,12 @@ class _TabkhaAppState extends ConsumerState<TabkhaApp> {
       ],
       child: provider.Consumer<AuthenticationViewModel>(
         builder: (ctx, auth, _) => MaterialApp(
-          locale: preferences.language == LanguageCodeEnum.ar
-              ? const Locale("ar")
-              : const Locale("en"),
+          // `?lang=ar` or `?lang=en` on the web overrides the saved language.
+          locale: switch (Uri.base.queryParameters['lang']) {
+            'ar' => const Locale('ar'),
+            'en' => const Locale('en'),
+            _ => preferences.language == LanguageCodeEnum.ar ? const Locale('ar') : const Locale('en'),
+          },
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           debugShowCheckedModeBanner: false,

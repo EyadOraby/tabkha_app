@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/Features/Food/Views/customer_views.dart';
@@ -38,11 +39,11 @@ class _AdminShellState extends State<AdminShell> {
         child: ListView(
           padding: EdgeInsets.fromLTRB(wide ? 32 : 18, wide ? 28 : 14, wide ? 32 : 18, 32),
           children: [
-            Text(widget.subtitle.toUpperCase(),
+            Text(context.t(widget.subtitle).toUpperCase(),
                 style: bodyStyle.copyWith(fontSize: 11.5, letterSpacing: 1.2, fontWeight: FontWeight.w700)),
-            const SizedBox(height: 4),
-            Text(widget.tabs[_index].label, style: titleStyle.copyWith(fontSize: wide ? 30 : 24)),
-            const SizedBox(height: 18),
+            SizedBox(height: 4),
+            Text(context.t(widget.tabs[_index].label), style: titleStyle.copyWith(fontSize: wide ? 30 : 24)),
+            SizedBox(height: 18),
             widget.tabs[_index].build(),
           ],
         ),
@@ -58,17 +59,17 @@ class _AdminShellState extends State<AdminShell> {
             onDestinationSelected: (i) => setState(() => _index = i),
             indicatorColor: green.withValues(alpha: 0.14),
             leading: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18),
+              padding: EdgeInsets.symmetric(vertical: 18),
               child: Column(children: [
-                const Text('Tabkha', style: TextStyle(fontFamily: 'Lobster', fontSize: 26, color: green)),
-                Text(widget.title, style: bodyStyle.copyWith(fontSize: 11)),
+                Text('Tabkha', style: TextStyle(fontFamily: 'Lobster', fontSize: 26, color: green)),
+                Text(context.t(widget.title), style: bodyStyle.copyWith(fontSize: 11)),
               ]),
             ),
             destinations: [
-              for (final t in widget.tabs) NavigationRailDestination(icon: Icon(t.icon), label: Text(t.label)),
+              for (final t in widget.tabs) NavigationRailDestination(icon: Icon(t.icon), label: Text(context.t(t.label))),
             ],
           ),
-          const VerticalDivider(width: 1),
+          VerticalDivider(width: 1),
           Expanded(child: body),
         ]),
       );
@@ -80,7 +81,7 @@ class _AdminShellState extends State<AdminShell> {
         indicatorColor: green.withValues(alpha: 0.14),
         selectedIndex: _index,
         onDestinationSelected: (i) => setState(() => _index = i),
-        destinations: [for (final t in widget.tabs) NavigationDestination(icon: Icon(t.icon), label: t.label)],
+        destinations: [for (final t in widget.tabs) NavigationDestination(icon: Icon(t.icon), label: context.t(t.label))],
       ),
     );
   }
@@ -106,62 +107,62 @@ class RestaurantAdminView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AdminShell(
-        title: 'Restaurant console',
+        title: context.t('Restaurant console'),
         subtitle: 'Koshary El Tahrir',
         tabs: [
-          AdminTab(Icons.space_dashboard_outlined, 'Overview', () => const _RestaurantOverview()),
-          AdminTab(Icons.receipt_long_outlined, 'Orders', () => const _OrdersBoard(restaurantId: managedRestaurantId)),
-          AdminTab(Icons.restaurant_menu_outlined, 'Menu', () => const _MenuManager()),
-          AdminTab(Icons.reviews_outlined, 'Reviews', () => const _ReviewsList()),
-          AdminTab(Icons.manage_accounts_outlined, 'Account', () => const _AdminAccount()),
+          AdminTab(Icons.space_dashboard_outlined, context.t('Overview'), () => _RestaurantOverview()),
+          AdminTab(Icons.receipt_long_outlined, 'Orders', () => _OrdersBoard(restaurantId: managedRestaurantId)),
+          AdminTab(Icons.restaurant_menu_outlined, context.t('Menu'), () => _MenuManager()),
+          AdminTab(Icons.reviews_outlined, context.t('Reviews'), () => _ReviewsList()),
+          AdminTab(Icons.manage_accounts_outlined, context.t('Account'), () => _AdminAccount()),
         ],
       );
 }
 
 class _RestaurantOverview extends ConsumerWidget {
-  const _RestaurantOverview();
+  _RestaurantOverview();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final food = ref.watch(foodProvider);
     final r = food.restaurant(managedRestaurantId);
-    if (r == null) return const SizedBox();
+    if (r == null) return SizedBox();
     final orders = food.ordersOf(r.id);
     final active = orders.where((o) => o.status.isActive).toList();
     final menu = food.menuOf(r.id);
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Panel(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         child: SwitchListTile(
-          title: Text(r.isOpen ? 'Open for orders' : 'Closed', style: titleStyle.copyWith(fontSize: 16)),
-          subtitle: Text(r.isOpen ? 'Customers can order now' : 'Customers see you as closed', style: bodyStyle),
+          title: Text(r.isOpen ? context.t('Open for orders') : context.t('Closed'), style: titleStyle.copyWith(fontSize: 16)),
+          subtitle: Text(r.isOpen ? context.t('Customers can order now') : context.t('Customers see you as closed'), style: bodyStyle),
           value: r.isOpen,
           activeThumbColor: green,
           onChanged: (v) => ref.read(foodProvider.notifier).setOpen(r.id, v),
         ),
       ),
-      const SizedBox(height: 14),
+      SizedBox(height: 14),
       StatGrid(children: [
-        StatCard(icon: Icons.local_fire_department_outlined, label: 'Active orders', value: '${active.length}', color: saffron),
-        StatCard(icon: Icons.payments_outlined, label: 'Revenue (delivered)', value: egp(food.revenueOf(orders))),
-        StatCard(icon: Icons.star_outline_rounded, label: 'Rating', value: food.ratingOf(r.id).toStringAsFixed(1), color: saffron),
+        StatCard(icon: Icons.local_fire_department_outlined, label: context.t('Active orders'), value: '${active.length}', color: saffron),
+        StatCard(icon: Icons.payments_outlined, label: context.t('Revenue (delivered)'), value: egp(food.revenueOf(orders))),
+        StatCard(icon: Icons.star_outline_rounded, label: context.t('Rating'), value: food.ratingOf(r.id).toStringAsFixed(1), color: saffron),
         StatCard(
           icon: Icons.restaurant_menu_outlined,
-          label: 'Dishes available',
+          label: context.t('Dishes available'),
           value: '${menu.where((m) => m.available).length}/${menu.length}',
-          color: const Color(0xFF5B8DEF),
+          color: Color(0xFF5B8DEF),
         ),
       ]),
-      const SectionTitle('Needs your attention'),
-      if (active.isEmpty) Text('All caught up.', style: bodyStyle),
+      SectionTitle(context.t('Needs your attention')),
+      if (active.isEmpty) Text(context.t('All caught up.'), style: bodyStyle),
       for (final o in active.take(4))
-        Padding(padding: const EdgeInsets.only(bottom: 10), child: _AdminOrderTile(order: o)),
+        Padding(padding: EdgeInsets.only(bottom: 10), child: _AdminOrderTile(order: o)),
     ]);
   }
 }
 
 class _OrdersBoard extends ConsumerWidget {
-  const _OrdersBoard({required this.restaurantId});
+  _OrdersBoard({required this.restaurantId});
   final String restaurantId;
 
   @override
@@ -178,24 +179,24 @@ class _OrdersBoard extends ConsumerWidget {
       final groups = [
         for (final (title, statuses) in columns)
           Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Text('$title  ${orders.where((o) => statuses.contains(o.status)).length}', style: titleStyle.copyWith(fontSize: 15)),
-            const SizedBox(height: 10),
+            Text('${context.t(title)}  ${orders.where((o) => statuses.contains(o.status)).length}', style: titleStyle.copyWith(fontSize: 15)),
+            SizedBox(height: 10),
             for (final o in orders.where((o) => statuses.contains(o.status)))
-              Padding(padding: const EdgeInsets.only(bottom: 10), child: _AdminOrderTile(order: o)),
-            const SizedBox(height: 14),
+              Padding(padding: EdgeInsets.only(bottom: 10), child: _AdminOrderTile(order: o)),
+            SizedBox(height: 14),
           ]),
       ];
       if (!wide) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: groups);
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [for (final g in groups) Expanded(child: Padding(padding: const EdgeInsets.only(right: 14), child: g))],
+        children: [for (final g in groups) Expanded(child: Padding(padding: EdgeInsets.only(right: 14), child: g))],
       );
     });
   }
 }
 
 class _AdminOrderTile extends ConsumerWidget {
-  const _AdminOrderTile({required this.order});
+  _AdminOrderTile({required this.order});
   final FoodOrder order;
 
   @override
@@ -207,33 +208,33 @@ class _AdminOrderTile extends ConsumerWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
           Text(order.id, style: titleStyle.copyWith(fontSize: 14)),
-          const Spacer(),
+          Spacer(),
           StatusChip(order.status),
         ]),
-        const SizedBox(height: 4),
-        Text('${order.customer} · ${order.itemCount} items · ${egp(order.total)} · ${minutes < 60 ? '$minutes min ago' : '${minutes ~/ 60} h ago'}',
+        SizedBox(height: 4),
+        Text('${order.customer} · ${order.itemCount} ${context.t('items')} · ${egp(order.total)} · ${_ago(context, minutes)}',
             style: bodyStyle.copyWith(fontSize: 12.5)),
-        const SizedBox(height: 6),
+        SizedBox(height: 6),
         Text(order.lines.map((l) => '${l.quantity}× ${l.name}').join(', '),
             maxLines: 2, overflow: TextOverflow.ellipsis, style: bodyStyle.copyWith(fontSize: 12.5, color: ink)),
         if (next != null) ...[
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           Row(children: [
             FilledButton(
               style: FilledButton.styleFrom(backgroundColor: green),
               onPressed: () => store.advanceOrder(order.id),
               child: Text(switch (next) {
-                OrderStatus.accepted => 'Accept',
-                OrderStatus.preparing => 'Start preparing',
-                OrderStatus.onTheWay => 'Hand to driver',
-                _ => 'Mark delivered',
+                OrderStatus.accepted => context.t('Accept'),
+                OrderStatus.preparing => context.t('Start preparing'),
+                OrderStatus.onTheWay => context.t('Hand to driver'),
+                _ => context.t('Mark delivered'),
               }),
             ),
             if (order.status == OrderStatus.placed) ...[
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               TextButton(
                 onPressed: () => store.rejectOrder(order.id),
-                child: const Text('Reject', style: TextStyle(color: tomato)),
+                child: Text(context.t('Reject'), style: TextStyle(color: tomato)),
               ),
             ],
           ]),
@@ -244,7 +245,7 @@ class _AdminOrderTile extends ConsumerWidget {
 }
 
 class _MenuManager extends ConsumerWidget {
-  const _MenuManager();
+  _MenuManager();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -255,26 +256,26 @@ class _MenuManager extends ConsumerWidget {
         child: FilledButton.icon(
           style: FilledButton.styleFrom(backgroundColor: green),
           onPressed: () => _addDish(context, ref),
-          icon: const Icon(Icons.add_rounded),
-          label: const Text('Add a dish'),
+          icon: Icon(Icons.add_rounded),
+          label: Text(context.t('Add a dish')),
         ),
       ),
-      const SizedBox(height: 14),
+      SizedBox(height: 14),
       for (final m in menu)
         Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: EdgeInsets.only(bottom: 10),
           child: Panel(
-            padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
             child: Row(children: [
               SizedBox(width: 56, height: 56, child: NetImage(m.image, radius: 12)),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(m.name, style: titleStyle.copyWith(fontSize: 14)),
                   Text('${m.section} · ${egp(m.price)}', style: bodyStyle.copyWith(fontSize: 12.5)),
                 ]),
               ),
-              Text(m.available ? 'Available' : 'Sold out', style: bodyStyle.copyWith(fontSize: 12)),
+              Text(m.available ? context.t('Available') : context.t('Sold out'), style: bodyStyle.copyWith(fontSize: 12)),
               Switch(
                 value: m.available,
                 activeThumbColor: green,
@@ -294,20 +295,20 @@ class _MenuManager extends ConsumerWidget {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-          title: const Text('Add a dish'),
+          title: Text(context.t('Add a dish')),
           content: Column(mainAxisSize: MainAxisSize.min, children: [
-            TextField(controller: name, decoration: const InputDecoration(labelText: 'Name')),
-            TextField(controller: price, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'Price (EGP)')),
-            const SizedBox(height: 12),
+            TextField(controller: name, decoration: InputDecoration(labelText: context.t('Name'))),
+            TextField(controller: price, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: context.t('Price (EGP)'))),
+            SizedBox(height: 12),
             DropdownButtonFormField<String>(
               initialValue: section,
-              decoration: const InputDecoration(labelText: 'Section'),
+              decoration: InputDecoration(labelText: context.t('Section')),
               items: [for (final s in ['Popular', 'Mains', 'Sides & more']) DropdownMenuItem(value: s, child: Text(s))],
               onChanged: (v) => setState(() => section = v ?? section),
             ),
           ]),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+            TextButton(onPressed: () => Navigator.pop(context), child: Text(context.t('Cancel'))),
             FilledButton(
               onPressed: () {
                 final p = double.tryParse(price.text);
@@ -320,7 +321,7 @@ class _MenuManager extends ConsumerWidget {
                     );
                 Navigator.pop(context);
               },
-              child: const Text('Add'),
+              child: Text(context.t('Add')),
             ),
           ],
         ),
@@ -332,7 +333,7 @@ class _MenuManager extends ConsumerWidget {
 }
 
 class _ReviewsList extends ConsumerWidget {
-  const _ReviewsList();
+  _ReviewsList();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -341,29 +342,29 @@ class _ReviewsList extends ConsumerWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Row(children: [
         Text(food.ratingOf(managedRestaurantId).toStringAsFixed(1), style: titleStyle.copyWith(fontSize: 40)),
-        const SizedBox(width: 10),
-        Text('from ${reviews.length} reviews', style: bodyStyle),
+        SizedBox(width: 10),
+        Text('${context.t('from')} ${reviews.length} ${context.t('reviews')}', style: bodyStyle),
       ]),
-      const SizedBox(height: 12),
-      for (final r in reviews) Padding(padding: const EdgeInsets.only(bottom: 10), child: ReviewTile(review: r)),
+      SizedBox(height: 12),
+      for (final r in reviews) Padding(padding: EdgeInsets.only(bottom: 10), child: ReviewTile(review: r)),
     ]);
   }
 }
 
 class _AdminAccount extends ConsumerWidget {
-  const _AdminAccount();
+  _AdminAccount();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        Text('View the app as', style: titleStyle.copyWith(fontSize: 15)),
-        const SizedBox(height: 10),
+        Text(context.t('View the app as'), style: titleStyle.copyWith(fontSize: 15)),
+        SizedBox(height: 10),
         RoleSwitcher(current: ref.watch(foodProvider).role),
-        const SizedBox(height: 14),
+        SizedBox(height: 14),
         Panel(
           padding: EdgeInsets.zero,
           child: ListTile(
-            leading: const Icon(Icons.restart_alt_rounded),
-            title: const Text('Reset demo data'),
+            leading: Icon(Icons.restart_alt_rounded),
+            title: Text(context.t('Reset demo data')),
             onTap: () => ref.read(foodProvider.notifier).reset(),
           ),
         ),
@@ -377,19 +378,19 @@ class SuperAdminView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AdminShell(
-        title: 'Platform admin',
-        subtitle: 'Tabkha platform',
+        title: context.t('Platform admin'),
+        subtitle: context.t('Tabkha platform'),
         tabs: [
-          AdminTab(Icons.insights_outlined, 'Overview', () => const _PlatformOverview()),
-          AdminTab(Icons.storefront_outlined, 'Restaurants', () => const _RestaurantsAdmin()),
-          AdminTab(Icons.receipt_long_outlined, 'All orders', () => const _AllOrders()),
-          AdminTab(Icons.manage_accounts_outlined, 'Account', () => const _AdminAccount()),
+          AdminTab(Icons.insights_outlined, context.t('Overview'), () => _PlatformOverview()),
+          AdminTab(Icons.storefront_outlined, context.t('Restaurants'), () => _RestaurantsAdmin()),
+          AdminTab(Icons.receipt_long_outlined, context.t('All orders'), () => _AllOrders()),
+          AdminTab(Icons.manage_accounts_outlined, context.t('Account'), () => _AdminAccount()),
         ],
       );
 }
 
 class _PlatformOverview extends ConsumerWidget {
-  const _PlatformOverview();
+  _PlatformOverview();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -400,21 +401,21 @@ class _PlatformOverview extends ConsumerWidget {
     final maxRevenue = ranked.isEmpty ? 1.0 : food.revenueOf(food.ordersOf(ranked.first.id)).clamp(1, double.infinity);
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       StatGrid(children: [
-        StatCard(icon: Icons.storefront_outlined, label: 'Live restaurants', value: '${food.restaurants.where((r) => r.isListed).length}'),
-        StatCard(icon: Icons.pending_actions_outlined, label: 'Awaiting approval', value: '${pending.length}', color: saffron),
-        StatCard(icon: Icons.receipt_long_outlined, label: 'Orders', value: '${food.orders.length}', color: const Color(0xFF5B8DEF)),
-        StatCard(icon: Icons.payments_outlined, label: 'Gross sales (delivered)', value: egp(food.revenueOf(food.orders))),
+        StatCard(icon: Icons.storefront_outlined, label: context.t('Live restaurants'), value: '${food.restaurants.where((r) => r.isListed).length}'),
+        StatCard(icon: Icons.pending_actions_outlined, label: context.t('Awaiting approval'), value: '${pending.length}', color: saffron),
+        StatCard(icon: Icons.receipt_long_outlined, label: context.t('Orders'), value: '${food.orders.length}', color: Color(0xFF5B8DEF)),
+        StatCard(icon: Icons.payments_outlined, label: context.t('Gross sales (delivered)'), value: egp(food.revenueOf(food.orders))),
       ]),
       if (pending.isNotEmpty) ...[
-        const SectionTitle('Waiting for approval'),
+        SectionTitle(context.t('Waiting for approval')),
         for (final r in pending) _RestaurantAdminTile(restaurant: r),
       ],
-      const SectionTitle('Top restaurants by sales'),
+      SectionTitle(context.t('Top restaurants by sales')),
       Panel(
         child: Column(children: [
           for (final r in ranked)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 7),
+              padding: EdgeInsets.symmetric(vertical: 7),
               child: Row(children: [
                 SizedBox(width: 140, child: Text(r.name, overflow: TextOverflow.ellipsis, style: titleStyle.copyWith(fontSize: 13))),
                 Expanded(
@@ -441,7 +442,7 @@ class _PlatformOverview extends ConsumerWidget {
 }
 
 class _RestaurantsAdmin extends ConsumerWidget {
-  const _RestaurantsAdmin();
+  _RestaurantsAdmin();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -451,7 +452,7 @@ class _RestaurantsAdmin extends ConsumerWidget {
 }
 
 class _RestaurantAdminTile extends ConsumerWidget {
-  const _RestaurantAdminTile({required this.restaurant});
+  _RestaurantAdminTile({required this.restaurant});
   final Restaurant restaurant;
 
   @override
@@ -460,17 +461,17 @@ class _RestaurantAdminTile extends ConsumerWidget {
     final store = ref.read(foodProvider.notifier);
     final r = restaurant;
     final (label, color) = switch (r.status) {
-      RestaurantStatus.pending => ('Pending', saffron),
-      RestaurantStatus.approved => ('Live', green),
-      RestaurantStatus.suspended => ('Suspended', tomato),
+      RestaurantStatus.pending => (context.t('Pending'), saffron),
+      RestaurantStatus.approved => (context.t('Live'), green),
+      RestaurantStatus.suspended => (context.t('Suspended'), tomato),
     };
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: EdgeInsets.only(bottom: 10),
       child: Panel(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(12),
         child: Row(children: [
           SizedBox(width: 56, height: 56, child: NetImage(r.image, radius: 14)),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(r.name, style: titleStyle.copyWith(fontSize: 15)),
@@ -479,19 +480,19 @@ class _RestaurantAdminTile extends ConsumerWidget {
             ]),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(20)),
-            child: Text(label, style: TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: color)),
+            child: Text(context.t(label), style: TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: color)),
           ),
-          const SizedBox(width: 6),
+          SizedBox(width: 6),
           PopupMenuButton<RestaurantStatus>(
-            tooltip: 'Change status',
+            tooltip: context.t('Change status'),
             onSelected: (s) => store.setRestaurantStatus(r.id, s),
             itemBuilder: (_) => [
               if (r.status != RestaurantStatus.approved)
-                const PopupMenuItem(value: RestaurantStatus.approved, child: Text('Approve and list')),
+                PopupMenuItem(value: RestaurantStatus.approved, child: Text(context.t('Approve and list'))),
               if (r.status != RestaurantStatus.suspended)
-                const PopupMenuItem(value: RestaurantStatus.suspended, child: Text('Suspend')),
+                PopupMenuItem(value: RestaurantStatus.suspended, child: Text(context.t('Suspend'))),
             ],
           ),
         ]),
@@ -501,26 +502,26 @@ class _RestaurantAdminTile extends ConsumerWidget {
 }
 
 class _AllOrders extends ConsumerWidget {
-  const _AllOrders();
+  _AllOrders();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final food = ref.watch(foodProvider);
     final orders = [...food.orders]..sort((a, b) => b.createdAt.compareTo(a.createdAt));
     return Panel(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: EdgeInsets.symmetric(vertical: 6),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(
           headingTextStyle: titleStyle.copyWith(fontSize: 13),
           dataTextStyle: bodyStyle.copyWith(fontSize: 13, color: ink),
-          columns: const [
-            DataColumn(label: Text('Order')),
-            DataColumn(label: Text('Restaurant')),
-            DataColumn(label: Text('Customer')),
-            DataColumn(label: Text('Items'), numeric: true),
-            DataColumn(label: Text('Total'), numeric: true),
-            DataColumn(label: Text('Status')),
+          columns: [
+            DataColumn(label: Text(context.t('Order'))),
+            DataColumn(label: Text(context.t('Restaurant'))),
+            DataColumn(label: Text(context.t('Customer'))),
+            DataColumn(label: Text(context.t('Items')), numeric: true),
+            DataColumn(label: Text(context.t('Total')), numeric: true),
+            DataColumn(label: Text(context.t('Status'))),
           ],
           rows: [
             for (final o in orders)
@@ -537,4 +538,11 @@ class _AllOrders extends ConsumerWidget {
       ),
     );
   }
+}
+
+/// "12 min ago" / "منذ 12 دقيقة".
+String _ago(BuildContext context, int minutes) {
+  final hours = minutes ~/ 60;
+  if (context.isArabic) return minutes < 60 ? 'منذ $minutes دقيقة' : 'منذ $hours ساعة';
+  return minutes < 60 ? '$minutes min ago' : '$hours h ago';
 }

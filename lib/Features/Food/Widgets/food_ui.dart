@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/constants/app_colors.dart';
 
@@ -25,15 +26,15 @@ class NetImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(radius),
       child: url.isEmpty
-          ? const ColoredBox(color: Color(0xFFE9E4DA), child: Center(child: Icon(Icons.restaurant, color: inkMuted)))
+          ? ColoredBox(color: Color(0xFFE9E4DA), child: Center(child: Icon(Icons.restaurant, color: inkMuted)))
           : Image.network(
               url,
               fit: fit,
               errorBuilder: (_, __, ___) =>
-                  const ColoredBox(color: Color(0xFFE9E4DA), child: Center(child: Icon(Icons.restaurant, color: inkMuted))),
+                  ColoredBox(color: Color(0xFFE9E4DA), child: Center(child: Icon(Icons.restaurant, color: inkMuted))),
               frameBuilder: (context, child, frame, sync) => AnimatedOpacity(
                 opacity: frame == null && !sync ? 0 : 1,
-                duration: const Duration(milliseconds: 300),
+                duration: Duration(milliseconds: 300),
                 child: child,
               ),
             ),
@@ -51,7 +52,7 @@ class RatingPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: light ? Colors.white : saffron.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(20),
@@ -59,11 +60,11 @@ class RatingPill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.star_rounded, size: 15, color: saffron),
-          const SizedBox(width: 3),
+          Icon(Icons.star_rounded, size: 15, color: saffron),
+          SizedBox(width: 3),
           Text(
-            rating == 0 ? 'New' : rating.toStringAsFixed(1) + (count == null ? '' : ' ($count)'),
-            style: const TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: ink),
+            rating == 0 ? context.t('New') : rating.toStringAsFixed(1) + (count == null ? '' : ' ($count)'),
+            style: TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: ink),
           ),
         ],
       ),
@@ -73,9 +74,9 @@ class RatingPill extends StatelessWidget {
 
 Color statusColor(OrderStatus s) => switch (s) {
       OrderStatus.placed => saffron,
-      OrderStatus.accepted => const Color(0xFF5B8DEF),
-      OrderStatus.preparing => const Color(0xFF9B7CF0),
-      OrderStatus.onTheWay => const Color(0xFF14A3B8),
+      OrderStatus.accepted => Color(0xFF5B8DEF),
+      OrderStatus.preparing => Color(0xFF9B7CF0),
+      OrderStatus.onTheWay => Color(0xFF14A3B8),
       OrderStatus.delivered => AppColors.greenBackground,
       OrderStatus.cancelled => tomato,
     };
@@ -89,9 +90,9 @@ class StatusChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = statusColor(status);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(color: c.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(20)),
-      child: Text(status.label,
+      child: Text(context.t(status.label),
           style: TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: c)),
     );
   }
@@ -131,13 +132,13 @@ class StatCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(8),
             decoration: BoxDecoration(color: c.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12)),
             child: Icon(icon, color: c, size: 20),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           Text(value, style: titleStyle.copyWith(fontSize: 24)),
-          const SizedBox(height: 2),
+          SizedBox(height: 2),
           Text(label, style: bodyStyle.copyWith(fontSize: 12.5)),
         ],
       ),
@@ -154,7 +155,7 @@ class SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 22, 0, 12),
+      padding: EdgeInsets.fromLTRB(0, 22, 0, 12),
       child: Row(
         children: [
           Expanded(child: Text(text, style: titleStyle.copyWith(fontSize: 18))),
@@ -185,16 +186,16 @@ class OrderTimeline extends StatelessWidget {
               height: 22,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: i <= reached ? AppColors.greenBackground : const Color(0xFFE4E0D6),
+                color: i <= reached ? AppColors.greenBackground : Color(0xFFE4E0D6),
               ),
-              child: i <= reached ? const Icon(Icons.check_rounded, size: 14, color: Colors.white) : null,
+              child: i <= reached ? Icon(Icons.check_rounded, size: 14, color: Colors.white) : null,
             ),
           ),
           if (i < steps.length - 1)
             Expanded(
               child: Container(
                 height: 3,
-                color: i < reached ? AppColors.greenBackground : const Color(0xFFE4E0D6),
+                color: i < reached ? AppColors.greenBackground : Color(0xFFE4E0D6),
               ),
             ),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/Features/Food/Views/admin_views.dart';
@@ -20,8 +21,8 @@ class HomeView extends ConsumerWidget {
     final role = ref.watch(foodProvider.select((s) => s.role));
     return switch (role) {
       AppRole.customer => CustomerShell(initialTab: initialTab),
-      AppRole.restaurantAdmin => const RestaurantAdminView(),
-      AppRole.superAdmin => const SuperAdminView(),
+      AppRole.restaurantAdmin => RestaurantAdminView(),
+      AppRole.superAdmin => SuperAdminView(),
     };
   }
 }
@@ -54,14 +55,14 @@ class _CustomerShellState extends ConsumerState<CustomerShell> {
         selectedIndex: _index,
         onDestinationSelected: (i) => setState(() => _index = i),
         destinations: [
-          const NavigationDestination(icon: Icon(Icons.delivery_dining_outlined), selectedIcon: Icon(Icons.delivery_dining), label: 'Order food'),
-          const NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: 'Recipes'),
+          NavigationDestination(icon: Icon(Icons.delivery_dining_outlined), selectedIcon: Icon(Icons.delivery_dining), label: context.t('Order food')),
+          NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: context.t('Recipes')),
           NavigationDestination(
-            icon: Badge(isLabelVisible: active > 0, label: Text('$active'), child: const Icon(Icons.receipt_long_outlined)),
-            selectedIcon: const Icon(Icons.receipt_long),
-            label: 'Orders',
+            icon: Badge(isLabelVisible: active > 0, label: Text('$active'), child: Icon(Icons.receipt_long_outlined)),
+            selectedIcon: Icon(Icons.receipt_long),
+            label: context.t('Orders'),
           ),
-          const NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person), label: 'Account'),
+          NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person), label: context.t('Account')),
         ],
       ),
     );
