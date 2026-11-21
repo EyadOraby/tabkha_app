@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tabkha_app/Features/Authentication/Views/forgot_password_view.dart';
+import 'package:tabkha_app/Features/Authentication/Views/onboarding_view.dart';
 import 'package:tabkha_app/Features/Authentication/Views/sign_up_view.dart';
 import 'package:tabkha_app/Features/Authentication/authentication_view_model.dart';
 import 'package:tabkha_app/Localization/app_localization_context.dart';
@@ -213,6 +214,22 @@ class _LoginViewState extends State<LoginView> {
                                 ),
                               ),
                             ),
+                    ),
+                    Center(
+                      child: TextButton.icon(
+                        onPressed: () => NavigationsServices.pushReplacementNamed(
+                            context, OnboardingView.routeName),
+                        icon: const Icon(Icons.restaurant_menu_rounded,
+                            color: AppColors.greenBackground),
+                        label: Text(
+                          context.loc.continueAsGuest,
+                          style: const TextStyle(
+                            color: AppColors.greenBackground,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Montserrat',
+                          ),
+                        ),
+                      ),
                     ),
                     const Spacer(),
                     Center(
