@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:tabkha_app/Features/Home/Views/home_view.dart';
+import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
 import 'package:tabkha_app/Features/Recipes/Models/meal.dart';
 import 'package:tabkha_app/Features/Recipes/Services/meal_api.dart';
 import 'package:tabkha_app/Features/Recipes/Views/meal_details_view.dart';

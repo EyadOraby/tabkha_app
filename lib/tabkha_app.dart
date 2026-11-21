@@ -10,7 +10,7 @@ import 'package:tabkha_app/Features/Authentication/Views/language_view.dart';
 import 'package:tabkha_app/Features/Authentication/Views/login_view.dart';
 import 'package:tabkha_app/Features/Authentication/Views/onboarding_view.dart';
 import 'package:tabkha_app/Features/Authentication/Views/sign_up_view.dart';
-import 'package:tabkha_app/Features/Home/Views/home_view.dart';
+import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
 import 'package:tabkha_app/Services/preferences_service.dart';
 import 'package:tabkha_app/commonModels/user_preferences.dart';
 import 'package:tabkha_app/constants/app_colors.dart';

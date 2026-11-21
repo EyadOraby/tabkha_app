@@ -10,16 +10,15 @@ import 'package:tabkha_app/Services/preferences_service.dart';
 import 'package:tabkha_app/commonModels/user_preferences.dart';
 import 'package:tabkha_app/constants/app_colors.dart';
 
-/// Recipes home: search, categories and a grid of meals from TheMealDB.
-class HomeView extends ConsumerStatefulWidget {
-  static const String routeName = '/home';
-  const HomeView({super.key});
+/// Recipes tab: search, categories and a grid of meals from TheMealDB.
+class RecipesView extends ConsumerStatefulWidget {
+  const RecipesView({super.key});
 
   @override
-  ConsumerState<HomeView> createState() => _HomeViewState();
+  ConsumerState<RecipesView> createState() => _RecipesViewState();
 }
 
-class _HomeViewState extends ConsumerState<HomeView> {
+class _RecipesViewState extends ConsumerState<RecipesView> {
   final _search = TextEditingController();
   Timer? _debounce;
 

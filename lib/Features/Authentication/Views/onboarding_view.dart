@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:tabkha_app/Features/Home/Views/home_view.dart';
+import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
 import 'package:tabkha_app/Localization/app_localization_context.dart';
 import 'package:tabkha_app/Services/navigation_services.dart';
 import 'package:tabkha_app/constants/app_colors.dart';
