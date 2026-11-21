@@ -235,7 +235,7 @@ class RestaurantView extends ConsumerWidget {
             backgroundColor: green,
             foregroundColor: Colors.white,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(r.name, style: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 17)),
+              title: Text(r.name, style: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 17, color: Colors.white)),
               background: Stack(
                 fit: StackFit.expand,
                 children: [
