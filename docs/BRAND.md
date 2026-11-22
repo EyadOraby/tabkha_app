@@ -35,3 +35,7 @@ Hand-drawn ingredient doodles (`lib/Features/Food/Widgets/kitchen_art.dart`): to
 ## Avoid
 
 Cold blues and purples, emoji as icons, glossy gradients and generic "food app" copy.
+
+## Font files
+
+The bundled fonts are trimmed for the web, where Flutter downloads every font before the first frame: variable axes are pinned to the weights the app uses and each font keeps only the script it is used for (Latin or Arabic), with fontTools. Total: 937 KB to 349 KB.
