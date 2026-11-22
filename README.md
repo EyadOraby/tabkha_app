@@ -4,6 +4,10 @@
 
 **Try it in the browser:** [eyadoraby.github.io/tabkha_app](https://eyadoraby.github.io/tabkha_app/)
 
+| Discover | Restaurant | Restaurant admin |
+|---|---|---|
+| ![Home](docs/screenshots/tabkha-home.jpg) | ![Restaurant page](docs/screenshots/tabkha-restaurant.jpg) | ![Admin](docs/screenshots/tabkha-admin.jpg) |
+
 ## Features
 
 **Customers**
