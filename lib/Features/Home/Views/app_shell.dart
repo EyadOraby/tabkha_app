@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabkha_app/Features/Food/Views/courier_view.dart';
 import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
@@ -23,6 +24,7 @@ class HomeView extends ConsumerWidget {
     return switch (role) {
       AppRole.customer => CustomerShell(initialTab: initialTab),
       AppRole.restaurantAdmin => RestaurantAdminView(),
+      AppRole.courier => CourierView(),
       AppRole.superAdmin => SuperAdminView(),
     };
   }

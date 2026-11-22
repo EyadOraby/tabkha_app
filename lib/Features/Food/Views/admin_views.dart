@@ -150,7 +150,7 @@ class _RestaurantOverview extends ConsumerWidget {
           icon: Icons.restaurant_menu_outlined,
           label: context.t('Dishes available'),
           value: '${menu.where((m) => m.available).length}/${menu.length}',
-          color: Color(0xFF5B8DEF),
+          color: Color(0xFF5E8A84),
         ),
       ]),
       SectionTitle(context.t('Needs your attention')),

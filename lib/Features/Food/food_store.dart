@@ -6,12 +6,13 @@ import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/Services/caching_service.dart';
 
 /// Who is using the app. The demo lets you switch to see every side.
-enum AppRole { customer, restaurantAdmin, superAdmin }
+enum AppRole { customer, restaurantAdmin, courier, superAdmin }
 
 extension AppRoleX on AppRole {
   String get label => switch (this) {
         AppRole.customer => 'Customer',
         AppRole.restaurantAdmin => 'Restaurant admin',
+        AppRole.courier => 'Courier',
         AppRole.superAdmin => 'Super admin',
       };
 }

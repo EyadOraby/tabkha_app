@@ -186,6 +186,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
         for (final (role, icon, note) in const [
           (AppRole.customer, Icons.person_outline_rounded, 'Order food, track it and leave reviews'),
           (AppRole.restaurantAdmin, Icons.storefront_outlined, 'Run Koshary El Tahrir: orders, menu, reviews'),
+          (AppRole.courier, Icons.delivery_dining_outlined, 'Pick up orders and deliver them'),
           (AppRole.superAdmin, Icons.admin_panel_settings_outlined, 'Approve restaurants and watch the platform'),
         ])
           Padding(

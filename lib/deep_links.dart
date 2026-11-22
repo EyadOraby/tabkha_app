@@ -7,6 +7,7 @@ import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
 import 'package:tabkha_app/Features/Recipes/Models/meal.dart';
 import 'package:tabkha_app/Features/Recipes/Views/meal_details_view.dart';
 import 'package:tabkha_app/Features/Food/Views/admin_views.dart';
+import 'package:tabkha_app/Features/Food/Views/courier_view.dart';
 import 'package:tabkha_app/Features/Food/Views/customer_views.dart';
 import 'package:tabkha_app/Features/Home/Views/home_view.dart';
 
@@ -34,6 +35,8 @@ Widget? deepLinkedScreen([Uri? url]) {
       return RestaurantView(restaurantId: params['id'] ?? 'r1');
     case 'admin':
       return const RestaurantAdminView();
+    case 'courier':
+      return const CourierView();
     case 'superadmin':
       return const SuperAdminView();
     case 'recipe':

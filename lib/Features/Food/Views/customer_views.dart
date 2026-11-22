@@ -789,6 +789,7 @@ class RoleSwitcher extends ConsumerWidget {
     const icons = {
       AppRole.customer: Icons.person_outline,
       AppRole.restaurantAdmin: Icons.storefront_outlined,
+      AppRole.courier: Icons.delivery_dining_outlined,
       AppRole.superAdmin: Icons.admin_panel_settings_outlined,
     };
     return SegmentedButton<AppRole>(

@@ -36,7 +36,7 @@ void main() {
   });
 
   final seed = File('assets/food_seed.json').readAsStringSync();
-  const screens = ['home', 'orders', 'account', 'restaurant&id=r1', 'admin', 'superadmin', 'login'];
+  const screens = ['home', 'orders', 'account', 'restaurant&id=r1', 'admin', 'courier', 'superadmin', 'login'];
 
   for (final lang in ['en', 'ar']) {
     for (final size in [const Size(390, 844), const Size(820, 1180), const Size(1280, 800)]) {
