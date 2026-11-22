@@ -38,6 +38,7 @@ const foodArabic = <String, String>{
   // Basket and checkout
   'Your basket': 'سلتك',
   'Pick a kitchen and add a dish or two.': 'اختر مطبخًا وأضف طبقًا أو اثنين.',
+  'Your food is being made with love.': 'طعامك يُحضَّر بحب.',
   'Your basket is empty': 'سلتك فارغة',
   'From': 'من',
   'Deliver to': 'التوصيل إلى',

@@ -578,7 +578,18 @@ class OrderTrackingView extends ConsumerWidget {
       appBar: AppBar(backgroundColor: cream, title: Text('${context.t('Order')} ${order.id}', style: titleStyle.copyWith(fontSize: 18))),
       body: ListView(
         padding: EdgeInsets.all(20),
-        children: [OrderCard(order: order, restaurant: r, expanded: true)],
+        children: [
+          if (order.status.isActive)
+            Padding(
+              padding: EdgeInsets.only(bottom: 16),
+              child: Row(children: [
+                KitchenDoodle(Ingredient.pot, size: 56),
+                SizedBox(width: 12),
+                Expanded(child: Text(context.t('Your food is being made with love.'), style: titleStyle.copyWith(fontSize: 18))),
+              ]),
+            ),
+          OrderCard(order: order, restaurant: r, expanded: true),
+        ],
       ),
     );
   }

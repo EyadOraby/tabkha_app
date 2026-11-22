@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabkha_app/Features/Food/Widgets/kitchen_art.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
 import 'package:tabkha_app/Localization/app_localization_context.dart';
@@ -53,15 +54,15 @@ class _OnboardingViewState extends State<OnboardingView> {
               },
               children: [
                 _buildOnboardingPage(
-                    'assets/images/onboarding_1.png',
+                    const [Ingredient.pot, Ingredient.basil, Ingredient.tomato],
                     "Discover Home-Cooked Flavors, Anytime, Anywhere!",
                     "Explore a world of freshly made, home-cooked meals and locally sourced products from trusted chefs and vendors. Whether you're craving comfort food or something new, we've got you covered!"),
                 _buildOnboardingPage(
-                    'assets/images/onboarding_2.png',
-                    "F Empower Local Communities, One Meal at a Time",
+                    const [Ingredient.bread, Ingredient.lemon, Ingredient.spoon],
+                    "Empower Local Communities, One Meal at a Time",
                     "By ordering on Tabkha, you’re supporting small food businesses and local chefs. Plus, help reduce food waste through our donation feature—giving back has never been easier!"),
                 _buildOnboardingPage(
-                    'assets/images/onboarding_3.jpg',
+                    const [Ingredient.chili, Ingredient.garlic, Ingredient.onion],
                     "Quick, Easy, Personalized—Made for You",
                     "Browse, order, and enjoy personalized recommendations based on your taste. Our smart features ensure a seamless and delightful experience every time."),
               ],
@@ -106,7 +107,7 @@ class _OnboardingViewState extends State<OnboardingView> {
     );
   }
 
-  Widget _buildOnboardingPage(String imagePath, String text, String text2) {
+  Widget _buildOnboardingPage(List<Ingredient> doodles, String text, String text2) {
     final size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -124,9 +125,14 @@ class _OnboardingViewState extends State<OnboardingView> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ClipOval(
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
+              child: ColoredBox(
+                color: const Color(0xFFF6EBD6),
+                child: Center(
+                  child: FractionallySizedBox(
+                    widthFactor: 0.72,
+                    child: IngredientScatter(items: doodles, size: size.width * 0.15, seed: doodles.first.index),
+                  ),
+                ),
               ),
             ),
           ),
