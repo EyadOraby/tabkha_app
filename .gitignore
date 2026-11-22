@@ -26,3 +26,6 @@ pubspec.lock
 # Build output
 /build/
 .flutter-plugins-dependencies
+
+# Test coverage output
+coverage/
