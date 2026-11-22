@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/Features/Food/Views/admin_views.dart';
@@ -159,8 +159,9 @@ class _Delivered extends ConsumerWidget {
         .where((o) => o.status == OrderStatus.delivered)
         .toList()
       ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-    if (done.isEmpty)
+    if (done.isEmpty) {
       return KitchenEmptyState(title: context.t('No deliveries yet.'));
+    }
     final collected = done.fold<double>(0, (s, o) => s + o.total);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

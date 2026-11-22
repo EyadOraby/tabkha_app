@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:tabkha_app/Features/Authentication/authentication_view_model.dart';
 import 'package:tabkha_app/Localization/app_localization_context.dart';
@@ -82,7 +82,7 @@ class _SignUpViewState extends State<SignUpView> {
               style: TextStyle(
                 shadows: [
                   Shadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withValues(alpha: 0.5),
                     offset: const Offset(0, 1),
                   ),
                 ],

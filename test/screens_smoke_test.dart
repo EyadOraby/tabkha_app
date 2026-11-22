@@ -1,11 +1,12 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:provider/provider.dart' as provider;
+import 'package:tabkha_app/Localization/delegates.dart';
 import 'package:tabkha_app/Services/caching_service.dart';
 import 'package:tabkha_app/commonModels/user_preferences.dart';
 import 'package:tabkha_app/Features/Authentication/authentication_view_model.dart';
@@ -60,7 +61,7 @@ void main() {
                 child: MaterialApp(
                   theme: tabkhaTheme(),
                   locale: Locale(lang),
-                  localizationsDelegates: AppLocalizations.localizationsDelegates,
+                  localizationsDelegates: appLocalizationsDelegates,
                   supportedLocales: AppLocalizations.supportedLocales,
                   home: page,
                 ),

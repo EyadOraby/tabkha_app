@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class AppColors {
   // static const Color primaryColor = Color(0xff27963C);
@@ -10,8 +10,8 @@ class AppColors {
   static const Color warningOrange = Color.fromARGB(255, 235, 170, 80);
   static const Color errorRed = Color.fromARGB(255, 227, 109, 109);
   static Color backGroundColor =
-      const Color.fromRGBO(255, 255, 255, 1).withOpacity(0.95);
-  static Color backgroundGrey = Colors.grey.withOpacity(0.1);
+      const Color.fromRGBO(255, 255, 255, 1).withValues(alpha: 0.95);
+  static Color backgroundGrey = Colors.grey.withValues(alpha: 0.1);
   static const Color white = Color.fromRGBO(255, 255, 255, 1);
   static const Color black = Colors.black;
   static const Color inkLight = Color.fromRGBO(108, 112, 114, 1);

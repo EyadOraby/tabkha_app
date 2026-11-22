@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tabkha_app/constants/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -20,7 +20,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextStyle? hintStyle;
 
   const CustomTextFormField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     required this.prefixIcon,
@@ -37,7 +37,7 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.hintStyle,
     this.prefixIconColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

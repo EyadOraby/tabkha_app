@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:tabkha_app/Localization/delegates.dart';
 import 'package:tabkha_app/constants/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/deep_links.dart';
@@ -57,7 +58,7 @@ class _TabkhaAppState extends ConsumerState<TabkhaApp> {
             'en' => const Locale('en'),
             _ => preferences.language == LanguageCodeEnum.ar ? const Locale('ar') : const Locale('en'),
           },
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: appLocalizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           debugShowCheckedModeBanner: false,
           title: 'Tabkha',

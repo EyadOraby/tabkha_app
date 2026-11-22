@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
@@ -120,7 +120,7 @@ class RestaurantAdminView extends StatelessWidget {
 }
 
 class _RestaurantOverview extends ConsumerWidget {
-  _RestaurantOverview();
+  const _RestaurantOverview();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -162,7 +162,7 @@ class _RestaurantOverview extends ConsumerWidget {
 }
 
 class _OrdersBoard extends ConsumerWidget {
-  _OrdersBoard({required this.restaurantId});
+  const _OrdersBoard({required this.restaurantId});
   final String restaurantId;
 
   @override
@@ -196,7 +196,7 @@ class _OrdersBoard extends ConsumerWidget {
 }
 
 class _AdminOrderTile extends ConsumerWidget {
-  _AdminOrderTile({required this.order});
+  const _AdminOrderTile({required this.order});
   final FoodOrder order;
 
   @override
@@ -257,7 +257,7 @@ class _AdminOrderTile extends ConsumerWidget {
 }
 
 class _MenuManager extends ConsumerWidget {
-  _MenuManager();
+  const _MenuManager();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -345,7 +345,7 @@ class _MenuManager extends ConsumerWidget {
 }
 
 class _ReviewsList extends ConsumerWidget {
-  _ReviewsList();
+  const _ReviewsList();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -364,7 +364,7 @@ class _ReviewsList extends ConsumerWidget {
 }
 
 class _AdminAccount extends ConsumerWidget {
-  _AdminAccount();
+  const _AdminAccount();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -402,7 +402,7 @@ class SuperAdminView extends StatelessWidget {
 }
 
 class _PlatformOverview extends ConsumerWidget {
-  _PlatformOverview();
+  const _PlatformOverview();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -454,7 +454,7 @@ class _PlatformOverview extends ConsumerWidget {
 }
 
 class _RestaurantsAdmin extends ConsumerWidget {
-  _RestaurantsAdmin();
+  const _RestaurantsAdmin();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -464,7 +464,7 @@ class _RestaurantsAdmin extends ConsumerWidget {
 }
 
 class _RestaurantAdminTile extends ConsumerWidget {
-  _RestaurantAdminTile({required this.restaurant});
+  const _RestaurantAdminTile({required this.restaurant});
   final Restaurant restaurant;
 
   @override
@@ -514,7 +514,7 @@ class _RestaurantAdminTile extends ConsumerWidget {
 }
 
 class _AllOrders extends ConsumerWidget {
-  _AllOrders();
+  const _AllOrders();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

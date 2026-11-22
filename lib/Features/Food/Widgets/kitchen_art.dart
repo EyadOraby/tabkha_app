@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Tabkha's illustration style: hand-drawn ingredient doodles with a flat
 /// colour shape printed slightly off the ink outline, like a two-colour

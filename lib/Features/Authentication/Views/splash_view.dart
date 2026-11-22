@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tabkha_app/Features/Authentication/Views/language_view.dart';
 import 'package:tabkha_app/Features/Authentication/authentication_view_model.dart';
 import 'package:tabkha_app/Features/Home/Views/app_shell.dart';

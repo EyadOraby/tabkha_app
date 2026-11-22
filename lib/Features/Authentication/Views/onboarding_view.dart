@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tabkha_app/Features/Food/Widgets/kitchen_art.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
@@ -8,6 +8,8 @@ import 'package:tabkha_app/constants/app_colors.dart';
 
 class OnboardingView extends StatefulWidget {
   static const routeName = '/onboarding';
+
+  const OnboardingView({super.key});
 
   @override
   _OnboardingViewState createState() => _OnboardingViewState();

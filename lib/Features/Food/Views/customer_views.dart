@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
@@ -112,7 +112,7 @@ class _DiscoverViewState extends ConsumerState<DiscoverView> {
 }
 
 class _CuisineChip extends StatelessWidget {
-  _CuisineChip({required this.label, required this.selected, required this.onTap});
+  const _CuisineChip({required this.label, required this.selected, required this.onTap});
   final String label;
   final bool selected;
   final VoidCallback onTap;
@@ -135,7 +135,7 @@ class _CuisineChip extends StatelessWidget {
 }
 
 class _ActiveOrderBanner extends StatelessWidget {
-  _ActiveOrderBanner({required this.order, required this.restaurant});
+  const _ActiveOrderBanner({required this.order, required this.restaurant});
   final FoodOrder order;
   final Restaurant? restaurant;
 
@@ -332,7 +332,7 @@ class RestaurantView extends ConsumerWidget {
 }
 
 class _Fact extends StatelessWidget {
-  _Fact(this.icon, this.text);
+  const _Fact(this.icon, this.text);
   final IconData icon;
   final String text;
 
@@ -348,7 +348,7 @@ class _Fact extends StatelessWidget {
 }
 
 class _MenuRow extends ConsumerWidget {
-  _MenuRow({required this.item, required this.open});
+  const _MenuRow({required this.item, required this.open});
   final MenuItem item;
   final bool open;
 
@@ -598,7 +598,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
 }
 
 class _Line extends StatelessWidget {
-  _Line(this.label, this.value, {this.bold = false});
+  const _Line(this.label, this.value, {this.bold = false});
   final String label;
   final String value;
   final bool bold;
