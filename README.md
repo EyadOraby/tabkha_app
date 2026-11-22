@@ -8,6 +8,8 @@
 |---|---|---|
 | ![Home](docs/screenshots/tabkha-home.jpg) | ![Restaurant page](docs/screenshots/tabkha-restaurant.jpg) | ![Admin](docs/screenshots/tabkha-admin.jpg) |
 
+Redesigned in November 2026 around a warm home-kitchen identity: herb green and tomato on cream, Young Serif and Nunito (Lalezar and Baloo Bhaijaan 2 in Arabic) and hand-drawn ingredient doodles. See [docs/BRAND.md](docs/BRAND.md).
+
 ## Features
 
 **Customers**

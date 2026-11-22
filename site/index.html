@@ -7,36 +7,38 @@
 <title>Tabkha</title>
 <meta name="description" content="Tabkha is a bilingual food delivery and recipes app with dashboards for restaurants and the platform.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--on-brand:#fff;--brand:#2A8056;--brand-soft:#E4F2EA;--coral:#FF6B57;--ink:#13201E;--muted:#5B6B68;--bg:#F6F7F5;--card:#fff;--line:#E4E8E6}
-@media (prefers-color-scheme:dark){:root{--on-brand:#0F1417;--brand:#5CC48F;--brand-soft:#173024;--ink:#EAF2F0;--muted:#9AB0AB;--bg:#0F1417;--card:#182025;--line:#25313A}}
+:root{--on-brand:#fff;--brand:#3F6B3A;--brand-soft:#DDE8D3;--coral:#D9583B;--ink:#2B2118;--muted:#7A6A5A;--bg:#FFF8EC;--card:#FFFDF8;--line:#EADCC4}
+@media (prefers-color-scheme:dark){:root{--on-brand:#1B1611;--brand:#9CC68A;--brand-soft:#26331F;--coral:#F08A6E;--ink:#F6EBDD;--muted:#C2B3A1;--bg:#1B1611;--card:#262019;--line:#3A3027}}
 *{box-sizing:border-box;margin:0}
-body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+body{font-family:Nunito,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
 a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
-.logo{display:flex;gap:10px;align-items:center;font-weight:800;font-size:20px;text-decoration:none}
+.logo{display:flex;gap:10px;align-items:center;font-family:"Young Serif",Georgia,serif;font-size:24px;text-decoration:none;color:var(--brand)}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;letter-spacing:-.01em}
 .logo span{width:34px;height:34px;border-radius:10px;background:var(--brand);display:grid;place-items:center;color:var(--on-brand)}
 nav .links{display:flex;gap:22px;font-weight:600;font-size:15px}
 nav .links a{text-decoration:none;color:var(--muted)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:14px;font-weight:700;text-decoration:none;transition:transform .15s}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:800;text-decoration:none;transition:transform .15s}
 .btn:hover{transform:translateY(-2px)}
 .btn.primary{background:var(--brand);color:var(--on-brand)}
 .btn.ghost{border:1.5px solid var(--line);background:var(--card)}
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:48px 0 72px}
 .pill{display:inline-block;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;margin-bottom:18px}
-h1{font-size:clamp(36px,6vw,60px);line-height:1.05;letter-spacing:-.03em;margin-bottom:18px}
-h1 em{font-style:normal;color:var(--brand)}
+h1{font-size:clamp(36px,6vw,60px);line-height:1.08;margin-bottom:18px}
+h1 em{font-style:normal;color:var(--coral)}
 .lead{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:28px}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.phone{justify-self:center;width:330px;height:660px;border-radius:44px;background:#0b0f10;padding:12px;box-shadow:0 30px 80px -20px rgba(42,128,86,.45)}
+.phone{justify-self:center;width:330px;height:660px;border-radius:44px;background:#2B2118;padding:12px;box-shadow:0 30px 60px -30px rgba(43,33,24,.5)}
 .phone iframe{width:100%;height:100%;border:0;border-radius:34px;background:#fff}
 section{padding:72px 0}
 h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin-bottom:12px}
 .sub{color:var(--muted);max-width:620px;margin-bottom:36px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--brand);border-radius:18px;padding:24px}
 .card .ic{font-size:26px;margin-bottom:10px}
 .card h3{font-size:18px;margin-bottom:6px}
 .card p{color:var(--muted);font-size:15px}
@@ -62,7 +64,7 @@ footer{padding:32px 0;color:var(--muted);font-size:14px;display:flex;justify-con
 <body>
 <div class="wrap">
   <nav>
-    <a class="logo" href="./"><span>🍲</span>Tabkha</a>
+    <a class="logo" href="./"><span aria-hidden="true">ط</span>Tabkha</a>
     <div class="links"><a href="#features">Features</a><a href="#dashboard">Dashboards</a><a href="#tech">Tech</a><a href="https://github.com/EyadOraby/tabkha_app">GitHub</a></div>
   </nav>
   <header class="hero">
@@ -71,30 +73,30 @@ footer{padding:32px 0;color:var(--muted);font-size:14px;display:flex;justify-con
       <h1>Order dinner, <em>or cook it yourself.</em></h1>
       <p class="lead">Tabkha brings restaurant delivery and home recipes together in one app. Restaurants run their kitchen from a dashboard, and the platform team approves restaurants and watches every order.</p>
       <div class="ctas">
-        <a class="btn primary" href="app/?screen=home">Open the live demo →</a>
+        <a class="btn primary" href="app/?screen=home">Open the live demo</a>
         <a class="btn ghost" href="app/?screen=admin">Restaurant dashboard</a>
-        <a class="btn ghost" href="https://github.com/EyadOraby/tabkha_app/releases/download/android/tabkha.apk">⬇ Android app</a>
+        <a class="btn ghost" href="https://github.com/EyadOraby/tabkha_app/releases/download/android/tabkha.apk">Android app</a>
       </div>
     </div>
-    <div class="phone live" data-src="app/?screen=home" data-title="Tabkha app"><img src="img/phone.jpg" alt="Tabkha app screenshot"><button type="button">▶ Try it live here</button></div>
+    <div class="phone live" data-src="app/?screen=home" data-title="Tabkha app"><img src="img/phone.jpg" alt="Tabkha app screenshot"><button type="button">Try it live here</button></div>
   </header>
 </div>
 <section id="features"><div class="wrap">
   <h2>Three apps in one</h2>
   <p class="sub">Customers, restaurant owners and platform admins each get their own side of Tabkha, all sharing the same live orders.</p>
   <div class="grid">
-    <div class="card"><div class="ic">🛵</div><h3>Delivery</h3><p>Search restaurants and dishes, filter by cuisine, build a basket and follow your order from placed to delivered.</p></div>
-    <div class="card"><div class="ic">📖</div><h3>Recipes</h3><p>Hundreds of recipes with ingredients, numbered steps and favourites saved on your device.</p></div>
-    <div class="card"><div class="ic">⭐</div><h3>Reviews</h3><p>Rate delivered orders; restaurant ratings update for everyone.</p></div>
-    <div class="card"><div class="ic">🍳</div><h3>Restaurant dashboard</h3><p>Accept orders, move them through the kitchen, mark dishes sold out and add new ones.</p></div>
-    <div class="card"><div class="ic">🛡️</div><h3>Platform admin</h3><p>Approve or suspend restaurants, see gross sales and a table of every order.</p></div>
-    <div class="card"><div class="ic">🌍</div><h3>Arabic and English</h3><p>Switch language live with full right-to-left layouts. Sign in with Firebase or continue as a guest.</p></div>
+    <div class="card"><h3>Delivery</h3><p>Search restaurants and dishes, filter by cuisine, build a basket and follow your order from placed to delivered.</p></div>
+    <div class="card"><h3>Recipes</h3><p>Hundreds of recipes with ingredients, numbered steps and favourites saved on your device.</p></div>
+    <div class="card"><h3>Reviews</h3><p>Rate delivered orders; restaurant ratings update for everyone.</p></div>
+    <div class="card"><h3>Restaurant dashboard</h3><p>Accept orders, move them through the kitchen, mark dishes sold out and add new ones.</p></div>
+    <div class="card"><h3>Platform admin</h3><p>Approve or suspend restaurants, see gross sales and a table of every order.</p></div>
+    <div class="card"><h3>Arabic and English</h3><p>Switch language live with full right-to-left layouts. Sign in with Firebase or continue as a guest.</p></div>
   </div>
 </div></section>
 <section id="dashboard"><div class="wrap">
   <h2>Dashboards for restaurants and admins</h2>
   <p class="sub">On a wide screen the dashboards use a side rail; on a phone they switch to bottom tabs. Try the platform view at <a href="app/?screen=superadmin">?screen=superadmin</a>.</p>
-  <div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="live shot" data-src="app/?screen=admin" data-title="Tabkha restaurant dashboard"><img src="img/dashboard.jpg" alt="Tabkha restaurant dashboard screenshot"><button type="button">▶ Open it live here</button></div></div>
+  <div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="live shot" data-src="app/?screen=admin" data-title="Tabkha restaurant dashboard"><img src="img/dashboard.jpg" alt="Tabkha restaurant dashboard screenshot"><button type="button">Open it live here</button></div></div>
 </div></section>
 <section id="tech"><div class="wrap">
   <h2>How it's built</h2>
