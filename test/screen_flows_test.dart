@@ -68,6 +68,7 @@ void main() {
   });
 
   orderFlowTests();
+  consoleTests();
 
   testWidgets('sign-up asks for every field before creating an account',
       (tester) async {
@@ -157,5 +158,89 @@ void orderFlowTests() {
     expect(find.textContaining('Your food is being made with love'),
         findsOneWidget);
     expect(tester.takeException(), isNull);
+  });
+}
+
+Future<void> openConsole(WidgetTester tester, String screen) async {
+  await tester.runAsync(() async {
+    await pumpPage(
+      tester,
+      deepLinkedScreen(Uri.parse('https://x.test/?screen=$screen'))!,
+    );
+    await Future<void>.delayed(const Duration(milliseconds: 200));
+  });
+  for (var i = 0; i < 5; i++) {
+    await tester.pump(const Duration(milliseconds: 200));
+  }
+}
+
+Future<void> goToTab(WidgetTester tester, String tab) async {
+  await tester.tap(
+    find.descendant(of: find.byType(NavigationBar), matching: find.text(tab)),
+  );
+  await tester.pumpAndSettle();
+}
+
+void consoleTests() {
+  testWidgets('a restaurant accepts an order from the overview',
+      (tester) async {
+    await openConsole(tester, 'admin');
+    final preparing = find.text('Start preparing').evaluate().length;
+    final accept = find.text('Accept').first;
+    await tester.ensureVisible(accept);
+    await tester.tap(accept);
+    await tester.pumpAndSettle();
+    expect(find.text('Start preparing').evaluate().length, preparing + 1);
+  });
+
+  testWidgets('a restaurant marks a dish sold out and adds a new one',
+      (tester) async {
+    await openConsole(tester, 'admin');
+    await goToTab(tester, 'Menu');
+
+    final firstSwitch = find.byType(Switch).first;
+    final before = tester.widget<Switch>(firstSwitch).value;
+    await tester.tap(firstSwitch);
+    await tester.pumpAndSettle();
+    expect(tester.widget<Switch>(find.byType(Switch).first).value, !before);
+
+    await tester.tap(find.text('Add a dish').first);
+    await tester.pumpAndSettle();
+    await tester.enterText(find.widgetWithText(TextField, 'Name'), 'Test Soup');
+    await tester.enterText(find.widgetWithText(TextField, 'Price (EGP)'), '55');
+    await tester.tap(find.widgetWithText(FilledButton, 'Add'));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('Test Soup'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.text('Test Soup'), findsOneWidget);
+  });
+
+  testWidgets('the platform admin approves a waiting restaurant',
+      (tester) async {
+    await openConsole(tester, 'superadmin');
+    await goToTab(tester, 'Restaurants');
+
+    final pending = find.text('Pending').evaluate().length;
+    expect(pending, greaterThan(0));
+    // The status menu on the first restaurant still waiting for approval.
+    final pendingTile = find.ancestor(
+      of: find.text('Pending').first,
+      matching: find.byWidgetPredicate(
+        (w) => w.runtimeType.toString() == '_RestaurantAdminTile',
+      ),
+    );
+    final menu = find.descendant(
+      of: pendingTile,
+      matching: find.byTooltip('Change status'),
+    );
+    await tester.ensureVisible(menu);
+    await tester.tap(menu);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Approve and list').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Pending').evaluate().length, pending - 1);
   });
 }

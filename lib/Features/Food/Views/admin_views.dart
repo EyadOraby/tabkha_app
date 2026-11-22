@@ -300,47 +300,68 @@ class _MenuManager extends ConsumerWidget {
   }
 
   Future<void> _addDish(BuildContext context, WidgetRef ref) async {
-    final name = TextEditingController();
-    final price = TextEditingController();
-    var section = 'Mains';
-    await showDialog<void>(
+    final dish = await showDialog<({String name, double price, String section})>(
       context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setState) => AlertDialog(
-          title: Text(context.t('Add a dish')),
-          content: Column(mainAxisSize: MainAxisSize.min, children: [
-            TextField(controller: name, decoration: InputDecoration(labelText: context.t('Name'))),
-            TextField(controller: price, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: context.t('Price (EGP)'))),
-            SizedBox(height: 12),
-            DropdownButtonFormField<String>(
-              initialValue: section,
-              decoration: InputDecoration(labelText: context.t('Section')),
-              items: [for (final s in ['Popular', 'Mains', 'Sides & more']) DropdownMenuItem(value: s, child: Text(s))],
-              onChanged: (v) => setState(() => section = v ?? section),
-            ),
-          ]),
-          actions: [
-            TextButton(onPressed: () => Navigator.pop(context), child: Text(context.t('Cancel'))),
-            FilledButton(
-              onPressed: () {
-                final p = double.tryParse(price.text);
-                if (name.text.trim().isEmpty || p == null || p <= 0) return;
-                ref.read(foodProvider.notifier).addMenuItem(
-                      restaurantId: managedRestaurantId,
-                      name: name.text,
-                      price: p,
-                      section: section,
-                    );
-                Navigator.pop(context);
-              },
-              child: Text(context.t('Add')),
-            ),
-          ],
-        ),
-      ),
+      builder: (_) => const _AddDishDialog(),
     );
-    name.dispose();
-    price.dispose();
+    if (dish == null) return;
+    ref.read(foodProvider.notifier).addMenuItem(
+          restaurantId: managedRestaurantId,
+          name: dish.name,
+          price: dish.price,
+          section: dish.section,
+        );
+  }
+}
+
+/// Asks for a dish's name, price and section. It owns its text controllers,
+/// so they stay alive until the dialog has finished closing.
+class _AddDishDialog extends StatefulWidget {
+  const _AddDishDialog();
+
+  @override
+  State<_AddDishDialog> createState() => _AddDishDialogState();
+}
+
+class _AddDishDialogState extends State<_AddDishDialog> {
+  final _name = TextEditingController();
+  final _price = TextEditingController();
+  var _section = 'Mains';
+
+  @override
+  void dispose() {
+    _name.dispose();
+    _price.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(context.t('Add a dish')),
+      content: Column(mainAxisSize: MainAxisSize.min, children: [
+        TextField(controller: _name, decoration: InputDecoration(labelText: context.t('Name'))),
+        TextField(controller: _price, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: context.t('Price (EGP)'))),
+        SizedBox(height: 12),
+        DropdownButtonFormField<String>(
+          initialValue: _section,
+          decoration: InputDecoration(labelText: context.t('Section')),
+          items: [for (final s in ['Popular', 'Mains', 'Sides & more']) DropdownMenuItem(value: s, child: Text(s))],
+          onChanged: (v) => setState(() => _section = v ?? _section),
+        ),
+      ]),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: Text(context.t('Cancel'))),
+        FilledButton(
+          onPressed: () {
+            final p = double.tryParse(_price.text);
+            if (_name.text.trim().isEmpty || p == null || p <= 0) return;
+            Navigator.pop(context, (name: _name.text, price: p, section: _section));
+          },
+          child: Text(context.t('Add')),
+        ),
+      ],
+    );
   }
 }
 
