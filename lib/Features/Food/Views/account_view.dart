@@ -63,6 +63,7 @@ class AccountView extends ConsumerWidget {
         for (final (role, icon) in const [
           (AppRole.customer, Icons.person_outline_rounded),
           (AppRole.restaurantAdmin, Icons.storefront_outlined),
+          (AppRole.courier, Icons.delivery_dining_outlined),
           (AppRole.superAdmin, Icons.admin_panel_settings_outlined),
         ])
           _Tile(
