@@ -61,7 +61,7 @@ class _AdminShellState extends State<AdminShell> {
             leading: Padding(
               padding: EdgeInsets.symmetric(vertical: 18),
               child: Column(children: [
-                Text('Tabkha', style: TextStyle(fontFamily: 'Lobster', fontSize: 26, color: green)),
+                Text('Tabkha', style: TextStyle(fontFamily: 'YoungSerif', fontSize: 26, color: green)),
                 Text(context.t(widget.title), style: bodyStyle.copyWith(fontSize: 11)),
               ]),
             ),
@@ -482,7 +482,7 @@ class _RestaurantAdminTile extends ConsumerWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(20)),
-            child: Text(context.t(label), style: TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: color)),
+            child: Text(context.t(label), style: TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w700, color: color)),
           ),
           SizedBox(width: 6),
           PopupMenuButton<RestaurantStatus>(

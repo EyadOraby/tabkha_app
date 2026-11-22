@@ -3,6 +3,7 @@ import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/Features/Food/Widgets/food_ui.dart';
+import 'package:tabkha_app/Features/Food/Widgets/kitchen_art.dart';
 import 'package:tabkha_app/Features/Food/food_store.dart';
 import 'package:tabkha_app/constants/app_colors.dart';
 
@@ -42,14 +43,25 @@ class _DiscoverViewState extends ConsumerState<DiscoverView> {
           sliver: SliverList.list(children: [
             Row(
               children: [
-                Text('Tabkha', style: TextStyle(fontFamily: 'Lobster', fontSize: 30, color: green)),
+                Text('Tabkha', style: TextStyle(fontFamily: 'YoungSerif', fontSize: 30, color: green)),
                 Spacer(),
                 Icon(Icons.location_on_rounded, color: tomato, size: 18),
                 Text(context.t(' Cairo'), style: bodyStyle.copyWith(fontWeight: FontWeight.w700, color: ink)),
               ],
             ),
             SizedBox(height: 6),
-            Text(context.t('Hungry? Home-style food,\ndelivered hot.'), style: titleStyle.copyWith(fontSize: 26, height: 1.15)),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: Text(context.t('Hungry? Home-style food,\ndelivered hot.'), style: titleStyle.copyWith(fontSize: 28, height: 1.15)),
+                ),
+                SizedBox(
+                  width: 112,
+                  child: IngredientScatter(items: [Ingredient.tomato, Ingredient.basil, Ingredient.chili, Ingredient.garlic], size: 40, seed: 7),
+                ),
+              ],
+            ),
             SizedBox(height: 16),
             TextField(
               onChanged: (v) => setState(() => _query = v.trim()),
@@ -57,8 +69,9 @@ class _DiscoverViewState extends ConsumerState<DiscoverView> {
                 hintText: context.t('Search restaurants or dishes'),
                 prefixIcon: Icon(Icons.search_rounded),
                 filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none),
+                fillColor: Color(0xFFFFFDF8),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide(color: Color(0xFFEADCC4))),
+                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide(color: Color(0xFFEADCC4))),
               ),
             ),
             if (active != null) ...[
@@ -116,7 +129,7 @@ class _CuisineChip extends StatelessWidget {
           backgroundColor: Colors.white,
           side: BorderSide.none,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-          labelStyle: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600, color: selected ? Colors.white : ink),
+          labelStyle: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w600, color: selected ? Colors.white : ink),
         ),
       );
 }
@@ -131,7 +144,7 @@ class _ActiveOrderBanner extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [green, Color(0xFF3AA374)]),
+        color: green,
         borderRadius: BorderRadius.circular(22),
       ),
       child: Row(
@@ -143,9 +156,9 @@ class _ActiveOrderBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('${context.t('Your order is')} ${context.isArabic ? context.t(order.status.label) : order.status.label.toLowerCase()}',
-                    style: TextStyle(fontFamily: 'Montserrat', color: Colors.white, fontWeight: FontWeight.w800)),
+                    style: TextStyle(fontFamily: 'Nunito', color: Colors.white, fontWeight: FontWeight.w800)),
                 Text('${restaurant?.name ?? ''} · ${context.t('about')} ${restaurant?.deliveryMinutes ?? 30} ${context.t('min')}',
-                    style: TextStyle(fontFamily: 'Montserrat', color: Colors.white70, fontSize: 12.5)),
+                    style: TextStyle(fontFamily: 'Nunito', color: Colors.white70, fontSize: 12.5)),
               ],
             ),
           ),
@@ -181,7 +194,7 @@ class RestaurantCard extends ConsumerWidget {
                     color: Colors.black54,
                     alignment: Alignment.center,
                     child: Text(context.t('Closed now'),
-                        style: TextStyle(fontFamily: 'Montserrat', color: Colors.white, fontWeight: FontWeight.w800, fontSize: 16)),
+                        style: TextStyle(fontFamily: 'Nunito', color: Colors.white, fontWeight: FontWeight.w800, fontSize: 16)),
                   ),
                 Positioned(top: 12, right: 12, child: RatingPill(rating: averageRating(reviews), count: reviews.length, light: true)),
               ],
@@ -239,7 +252,7 @@ class RestaurantView extends ConsumerWidget {
             backgroundColor: green,
             foregroundColor: Colors.white,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(r.name, style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 17, color: Colors.white)),
+              title: Text(r.name, style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w800, fontSize: 17, color: Colors.white)),
               background: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -307,9 +320,9 @@ class RestaurantView extends ConsumerWidget {
                   children: [
                     CircleAvatar(radius: 14, backgroundColor: Colors.white24, child: Text('$inCart', style: TextStyle(color: Colors.white, fontSize: 13))),
                     SizedBox(width: 12),
-                    Text(context.t('View basket'), style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w700, fontSize: 16)),
+                    Text(context.t('View basket'), style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w700, fontSize: 16)),
                     Spacer(),
-                    Text(egp(food.cartSubtotal), style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w800)),
+                    Text(egp(food.cartSubtotal), style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w800)),
                   ],
                 ),
               ),
@@ -447,7 +460,10 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
       backgroundColor: cream,
       appBar: AppBar(backgroundColor: cream, title: Text(context.t('Your basket'), style: titleStyle.copyWith(fontSize: 20))),
       body: food.cart.isEmpty
-          ? Center(child: Text(context.t('Your basket is empty'), style: bodyStyle))
+          ? KitchenEmptyState(
+              title: context.t('Your basket is empty'),
+              message: context.t('Pick a kitchen and add a dish or two.'),
+            )
           : ListView(
               padding: EdgeInsets.fromLTRB(20, 4, 20, 24),
               children: [
@@ -521,7 +537,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => OrderTrackingView(orderId: order.id)));
                   },
                   child: Text('${context.t('Place order')} · ${egp(food.cartTotal)}',
-                      style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 16)),
+                      style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w800, fontSize: 16)),
                 ),
               ),
             ),
@@ -686,12 +702,8 @@ class MyOrdersView extends ConsumerWidget {
         SizedBox(height: 16),
         if (orders.isEmpty)
           Padding(
-            padding: EdgeInsets.only(top: 60),
-            child: Column(children: [
-              Icon(Icons.receipt_long_outlined, size: 56, color: inkMuted),
-              SizedBox(height: 12),
-              Text(context.t('No orders yet. Your first one is a few taps away.'), style: bodyStyle, textAlign: TextAlign.center),
-            ]),
+            padding: EdgeInsets.only(top: 40),
+            child: KitchenEmptyState(title: context.t('No orders yet. Your first one is a few taps away.')),
           ),
         for (final o in orders)
           Padding(padding: EdgeInsets.only(bottom: 14), child: OrderCard(order: o, restaurant: food.restaurant(o.restaurantId))),

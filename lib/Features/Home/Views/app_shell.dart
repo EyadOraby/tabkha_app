@@ -66,7 +66,7 @@ class _CustomerShellState extends ConsumerState<CustomerShell> {
               onDestinationSelected: (i) => setState(() => _index = i),
               leading: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 18),
-                child: Text('Tabkha', style: TextStyle(fontFamily: 'Lobster', fontSize: 26, color: green)),
+                child: Text('Tabkha', style: TextStyle(fontFamily: 'YoungSerif', fontSize: 26, color: green)),
               ),
               destinations: [
                 for (final (icon, selected, label, badge) in tabs)

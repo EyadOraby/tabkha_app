@@ -79,7 +79,7 @@ class LanguageView extends ConsumerWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            fontFamily: "Montserrat",
+                            fontFamily: 'Nunito',
                           ),
                         ),
                       ),
@@ -111,7 +111,7 @@ class LanguageView extends ConsumerWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            fontFamily: "Montserrat",
+                            fontFamily: 'Nunito',
                           ),
                         ),
                       ),

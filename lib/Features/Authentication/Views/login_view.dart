@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabkha_app/Features/Food/Widgets/kitchen_art.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart' as provider;
 import 'package:tabkha_app/Features/Authentication/Views/forgot_password_view.dart';
@@ -69,7 +70,16 @@ class _LoginViewState extends ConsumerState<LoginView> {
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 460),
                     child: Column(children: [
-                      Image.asset('assets/images/tabkha_logo_1.png', height: 150),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Transform.rotate(angle: -.3, child: const KitchenDoodle(Ingredient.basil, size: 40)),
+                          const SizedBox(width: 6),
+                          Image.asset('assets/images/tabkha_logo_1.png', height: 140),
+                          const SizedBox(width: 6),
+                          Transform.rotate(angle: .25, child: const KitchenDoodle(Ingredient.tomato, size: 40)),
+                        ],
+                      ),
                       const SizedBox(height: 8),
                       form,
                     ]),
@@ -148,7 +158,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                   },
             child: auth.status == Status.loading
                 ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2.5, color: Colors.white))
-                : Text(context.loc.login, style: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w700, fontSize: 16)),
+                : Text(context.loc.login, style: const TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w700, fontSize: 16)),
           ),
         ),
         const SizedBox(height: 10),
@@ -161,7 +171,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
           ),
           onPressed: () => _enterAs(AppRole.customer),
           icon: const Icon(Icons.restaurant_menu_rounded),
-          label: Text(context.loc.continueAsGuest, style: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600)),
+          label: Text(context.loc.continueAsGuest, style: const TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w600)),
         ),
         const SizedBox(height: 22),
         Row(children: [
@@ -225,13 +235,13 @@ class _BrandPanel extends StatelessWidget {
       padding: const EdgeInsets.all(48),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
-        gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [_green, Color(0xFF14513A)]),
+        color: _green,
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Text('Tabkha', style: TextStyle(fontFamily: 'Lobster', fontSize: 40, color: Colors.white)),
+        const Text('Tabkha', style: TextStyle(fontFamily: 'YoungSerif', fontSize: 40, color: Colors.white)),
         const Spacer(),
         Text(context.t('Hungry? Home-style food,\ndelivered hot.'),
-            style: const TextStyle(fontFamily: 'Montserrat', fontSize: 40, height: 1.1, fontWeight: FontWeight.w800, color: Colors.white)),
+            style: const TextStyle(fontFamily: 'Nunito', fontSize: 40, height: 1.1, fontWeight: FontWeight.w800, color: Colors.white)),
         const SizedBox(height: 28),
         for (final (icon, text) in const [
           (Icons.delivery_dining_rounded, 'Restaurants near you, delivered hot'),
@@ -243,7 +253,7 @@ class _BrandPanel extends StatelessWidget {
             child: Row(children: [
               Icon(icon, color: Colors.white70),
               const SizedBox(width: 12),
-              Text(context.t(text), style: const TextStyle(fontFamily: 'Montserrat', color: Colors.white, fontSize: 16)),
+              Text(context.t(text), style: const TextStyle(fontFamily: 'Nunito', color: Colors.white, fontSize: 16)),
             ]),
           ),
         const Spacer(),

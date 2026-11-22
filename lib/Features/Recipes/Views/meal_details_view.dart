@@ -98,7 +98,7 @@ class _Header extends StatelessWidget {
         Text(
           name,
           style: const TextStyle(
-            fontFamily: 'Montserrat',
+            fontFamily: 'Nunito',
             fontSize: 24,
             fontWeight: FontWeight.w800,
             color: AppColors.textColor,
@@ -126,7 +126,7 @@ class _Header extends StatelessWidget {
                   child: Text(
                     tag,
                     style: const TextStyle(
-                      fontFamily: 'Montserrat',
+                      fontFamily: 'Nunito',
                       fontWeight: FontWeight.w600,
                       fontSize: 12,
                       color: AppColors.greenBackground,
@@ -177,13 +177,13 @@ class _MealBody extends StatelessWidget {
                       Expanded(
                         child: Text(
                           ingredient.name,
-                          style: const TextStyle(fontFamily: 'Montserrat', fontSize: 14),
+                          style: const TextStyle(fontFamily: 'Nunito', fontSize: 14),
                         ),
                       ),
                       Text(
                         ingredient.measure,
                         style: const TextStyle(
-                          fontFamily: 'Montserrat',
+                          fontFamily: 'Nunito',
                           fontSize: 13,
                           color: AppColors.inkLight,
                         ),
@@ -220,7 +220,7 @@ class _MealBody extends StatelessWidget {
                 Expanded(
                   child: Text(
                     step,
-                    style: const TextStyle(fontFamily: 'Montserrat', fontSize: 14, height: 1.55),
+                    style: const TextStyle(fontFamily: 'Nunito', fontSize: 14, height: 1.55),
                   ),
                 ),
               ],
@@ -243,10 +243,10 @@ class _SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontFamily: 'Montserrat', fontSize: 18, fontWeight: FontWeight.w700),
+          style: const TextStyle(fontFamily: 'Nunito', fontSize: 18, fontWeight: FontWeight.w700),
         ),
         const SizedBox(width: 8),
-        Text('$count', style: const TextStyle(fontFamily: 'Montserrat', color: AppColors.inkLight)),
+        Text('$count', style: const TextStyle(fontFamily: 'Nunito', color: AppColors.inkLight)),
       ],
     );
   }
@@ -266,7 +266,7 @@ class _Message extends StatelessWidget {
         children: [
           const Icon(Icons.ramen_dining_rounded, size: 48, color: AppColors.inkLight),
           const SizedBox(height: 12),
-          Text(text, textAlign: TextAlign.center, style: const TextStyle(fontFamily: 'Montserrat')),
+          Text(text, textAlign: TextAlign.center, style: const TextStyle(fontFamily: 'Nunito')),
           if (onRetry != null) ...[
             const SizedBox(height: 16),
             FilledButton.icon(

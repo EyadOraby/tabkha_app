@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:tabkha_app/constants/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/deep_links.dart';
 import 'package:provider/provider.dart' as provider;
@@ -13,7 +13,6 @@ import 'package:tabkha_app/Features/Authentication/Views/sign_up_view.dart';
 import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
 import 'package:tabkha_app/Services/preferences_service.dart';
 import 'package:tabkha_app/commonModels/user_preferences.dart';
-import 'package:tabkha_app/constants/app_colors.dart';
 import 'package:tabkha_app/constants/app_constants.dart';
 import 'package:tabkha_app/Features/Authentication/authentication_view_model.dart';
 import 'package:tabkha_app/Features/Authentication/Views/splash_view.dart';
@@ -62,21 +61,7 @@ class _TabkhaAppState extends ConsumerState<TabkhaApp> {
           supportedLocales: AppLocalizations.supportedLocales,
           debugShowCheckedModeBanner: false,
           title: 'Tabkha',
-          theme: ThemeData(
-            colorScheme: ThemeData().colorScheme.copyWith(
-                  primary: AppColors.primaryColor,
-                ),
-            primaryColor: AppColors.primaryColor,
-            focusColor: AppColors.primaryColor,
-            appBarTheme: const AppBarTheme(
-              foregroundColor: AppColors.primaryColor,
-              backgroundColor: Colors.white,
-              systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarBrightness: Brightness.light,
-                  statusBarColor: Colors.transparent,
-                  systemNavigationBarColor: Colors.transparent),
-            ),
-          ),
+          theme: tabkhaTheme(),
           home: deepLinkedScreen() ?? SplashView(),
           navigatorKey: navigatorKey,
           routes: {

@@ -50,7 +50,7 @@ class CustomTextFormField extends StatelessWidget {
         style: TextStyle(
           fontSize: fontSize ?? size.width * 0.04,
           fontWeight: FontWeight.w400,
-          fontFamily: 'Montserrat',
+          fontFamily: 'Nunito',
         ),
         cursorHeight: size.height * 0.03,
         cursorColor: AppColors.greenBackground,
@@ -73,13 +73,13 @@ class CustomTextFormField extends StatelessWidget {
                 color: AppColors.greyColor,
                 fontSize: fontSize ?? size.width * 0.04,
                 fontWeight: FontWeight.w400,
-                fontFamily: 'Montserrat',
+                fontFamily: 'Nunito',
               ),
           errorStyle: TextStyle(
             color: AppColors.errorColor,
             fontSize: size.width * 0.02,
             fontWeight: FontWeight.w400,
-            fontFamily: 'Montserrat',
+            fontFamily: 'Nunito',
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),

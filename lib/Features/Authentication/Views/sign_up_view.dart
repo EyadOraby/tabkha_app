@@ -88,7 +88,7 @@ class _SignUpViewState extends State<SignUpView> {
                 ],
                 fontSize: size.width * 0.05,
                 fontWeight: FontWeight.w600,
-                fontFamily: 'Montserrat',
+                fontFamily: 'Nunito',
               ),
             ),
           ],
@@ -250,7 +250,7 @@ class _SignUpViewState extends State<SignUpView> {
                             style: TextStyle(
                               fontSize: size.width * 0.04,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Nunito',
                             ),
                           ),
                         ),

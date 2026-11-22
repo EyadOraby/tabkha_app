@@ -55,13 +55,20 @@ flutter:
 
 
 
+  # Brand type, all SIL Open Font License (see assets/fonts/brand/OFL-*.txt).
   fonts:
-    - family: Lobster
+    - family: YoungSerif
       fonts:
-        - asset: assets/fonts/Lobster-Regular.ttf
-    - family: Montserrat
-      fonts:        
-        - asset: assets/fonts/Montserrat-VariableFont_wght.ttf
+        - asset: assets/fonts/brand/YoungSerif.ttf
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/brand/Nunito.ttf
+    - family: Lalezar
+      fonts:
+        - asset: assets/fonts/brand/Lalezar.ttf
+    - family: BalooBhaijaan2
+      fonts:
+        - asset: assets/fonts/brand/BalooBhaijaan2.ttf
 
   # fonts:
   #   - family: Schyler

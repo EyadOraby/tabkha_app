@@ -28,7 +28,7 @@ class AccountView extends ConsumerWidget {
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        gradient: const LinearGradient(colors: [green, Color(0xFF14513A)]),
+        color: green,
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
@@ -42,8 +42,8 @@ class AccountView extends ConsumerWidget {
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(context.t('Demo customer'),
-                  style: const TextStyle(fontFamily: 'Montserrat', fontSize: 20, fontWeight: FontWeight.w800, color: Colors.white)),
-              const Text('6 Ibn Malek St, Giza', style: TextStyle(fontFamily: 'Montserrat', color: Colors.white70)),
+                  style: const TextStyle(fontFamily: 'Nunito', fontSize: 20, fontWeight: FontWeight.w800, color: Colors.white)),
+              const Text('6 Ibn Malek St, Giza', style: TextStyle(fontFamily: 'Nunito', color: Colors.white70)),
             ]),
           ),
         ]),
@@ -172,9 +172,9 @@ class _Stat extends StatelessWidget {
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(value,
-                style: const TextStyle(fontFamily: 'Montserrat', fontSize: 20, fontWeight: FontWeight.w800, color: Colors.white)),
+                style: const TextStyle(fontFamily: 'Nunito', fontSize: 20, fontWeight: FontWeight.w800, color: Colors.white)),
           ),
-          Text(label, style: const TextStyle(fontFamily: 'Montserrat', fontSize: 12, color: Colors.white70)),
+          Text(label, style: const TextStyle(fontFamily: 'Nunito', fontSize: 12, color: Colors.white70)),
         ]),
       );
 }

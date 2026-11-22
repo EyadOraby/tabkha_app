@@ -58,7 +58,7 @@ class MealCard extends ConsumerWidget {
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontFamily: 'Montserrat',
+                  fontFamily: 'Nunito',
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
                   height: 1.25,

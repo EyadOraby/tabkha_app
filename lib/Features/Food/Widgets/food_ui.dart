@@ -3,16 +3,18 @@ import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/constants/app_colors.dart';
 
-const ink = Color(0xFF1B2A24);
-const inkMuted = Color(0xFF66756F);
-const cream = Color(0xFFF7F4EE);
-const saffron = Color(0xFFE8A33D);
-const tomato = Color(0xFFE2574C);
+const ink = Color(0xFF2B2118);
+const inkMuted = Color(0xFF7A6A5A);
+const cream = Color(0xFFFFF8EC);
+const saffron = Color(0xFFE3A33A);
+const tomato = Color(0xFFD9583B);
+const herb = Color(0xFF3F6B3A);
+const crust = Color(0xFFB9773D);
 
 String egp(double v) => 'EGP ${v.toStringAsFixed(v.truncateToDouble() == v ? 0 : 2)}';
 
-const titleStyle = TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w800, color: ink);
-const bodyStyle = TextStyle(fontFamily: 'Montserrat', color: inkMuted, height: 1.4);
+const titleStyle = TextStyle(fontFamily: 'YoungSerif', fontFamilyFallback: ['Lalezar'], fontWeight: FontWeight.w400, color: ink);
+const bodyStyle = TextStyle(fontFamily: 'Nunito', color: inkMuted, height: 1.4);
 
 class NetImage extends StatelessWidget {
   const NetImage(this.url, {super.key, this.radius = 18, this.fit = BoxFit.cover});
@@ -26,12 +28,12 @@ class NetImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(radius),
       child: url.isEmpty
-          ? ColoredBox(color: Color(0xFFE9E4DA), child: Center(child: Icon(Icons.restaurant, color: inkMuted)))
+          ? ColoredBox(color: Color(0xFFF1E6D2), child: Center(child: Icon(Icons.restaurant, color: inkMuted)))
           : Image.network(
               url,
               fit: fit,
               errorBuilder: (_, __, ___) =>
-                  ColoredBox(color: Color(0xFFE9E4DA), child: Center(child: Icon(Icons.restaurant, color: inkMuted))),
+                  ColoredBox(color: Color(0xFFF1E6D2), child: Center(child: Icon(Icons.restaurant, color: inkMuted))),
               frameBuilder: (context, child, frame, sync) => AnimatedOpacity(
                 opacity: frame == null && !sync ? 0 : 1,
                 duration: Duration(milliseconds: 300),
@@ -64,7 +66,7 @@ class RatingPill extends StatelessWidget {
           SizedBox(width: 3),
           Text(
             rating == 0 ? context.t('New') : rating.toStringAsFixed(1) + (count == null ? '' : ' ($count)'),
-            style: TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: ink),
+            style: TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w700, color: ink),
           ),
         ],
       ),
@@ -74,9 +76,9 @@ class RatingPill extends StatelessWidget {
 
 Color statusColor(OrderStatus s) => switch (s) {
       OrderStatus.placed => saffron,
-      OrderStatus.accepted => Color(0xFF5B8DEF),
-      OrderStatus.preparing => Color(0xFF9B7CF0),
-      OrderStatus.onTheWay => Color(0xFF14A3B8),
+      OrderStatus.accepted => crust,
+      OrderStatus.preparing => Color(0xFFC77B2B),
+      OrderStatus.onTheWay => Color(0xFF5E8A84),
       OrderStatus.delivered => AppColors.greenBackground,
       OrderStatus.cancelled => tomato,
     };
@@ -93,7 +95,7 @@ class StatusChip extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(color: c.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(20)),
       child: Text(context.t(status.label),
-          style: TextStyle(fontFamily: 'Montserrat', fontSize: 12, fontWeight: FontWeight.w700, color: c)),
+          style: TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w700, color: c)),
     );
   }
 }

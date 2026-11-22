@@ -74,7 +74,7 @@ class _RecipesViewState extends ConsumerState<RecipesView> {
                           const Text(
                             'Tabkha',
                             style: TextStyle(
-                              fontFamily: 'Lobster',
+                              fontFamily: 'YoungSerif',
                               fontSize: 28,
                               color: AppColors.greenBackground,
                             ),
@@ -93,7 +93,7 @@ class _RecipesViewState extends ConsumerState<RecipesView> {
                       Text(
                         context.loc.whatToCook,
                         style: const TextStyle(
-                          fontFamily: 'Montserrat',
+                          fontFamily: 'Nunito',
                           fontSize: 26,
                           fontWeight: FontWeight.w800,
                           height: 1.2,
@@ -105,7 +105,7 @@ class _RecipesViewState extends ConsumerState<RecipesView> {
                         controller: _search,
                         onChanged: _onSearch,
                         textInputAction: TextInputAction.search,
-                        style: const TextStyle(fontFamily: 'Montserrat'),
+                        style: const TextStyle(fontFamily: 'Nunito'),
                         decoration: InputDecoration(
                           hintText: context.loc.searchRecipes,
                           prefixIcon: const Icon(Icons.search_rounded),
@@ -132,7 +132,7 @@ class _RecipesViewState extends ConsumerState<RecipesView> {
                       Text(
                         context.loc.categories,
                         style: const TextStyle(
-                          fontFamily: 'Montserrat',
+                          fontFamily: 'Nunito',
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
                         ),
@@ -156,7 +156,7 @@ class _RecipesViewState extends ConsumerState<RecipesView> {
                       query.isEmpty ? context.loc.popularIn(category) : context.loc.resultsFor(query),
                       key: ValueKey('$query|$category'),
                       style: const TextStyle(
-                        fontFamily: 'Montserrat',
+                        fontFamily: 'Nunito',
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                       ),
@@ -236,7 +236,7 @@ class _CategoryStrip extends ConsumerWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontFamily: 'Montserrat',
+                        fontFamily: 'Nunito',
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: active ? Colors.white : AppColors.textColor,
@@ -337,7 +337,7 @@ class _Message extends StatelessWidget {
         children: [
           const Icon(Icons.ramen_dining_rounded, size: 48, color: AppColors.inkLight),
           const SizedBox(height: 12),
-          Text(text, textAlign: TextAlign.center, style: const TextStyle(fontFamily: 'Montserrat')),
+          Text(text, textAlign: TextAlign.center, style: const TextStyle(fontFamily: 'Nunito')),
           if (onRetry != null) ...[
             const SizedBox(height: 16),
             FilledButton.icon(

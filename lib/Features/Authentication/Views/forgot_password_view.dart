@@ -76,7 +76,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 ],
                 fontSize: size.width * 0.05,
                 fontWeight: FontWeight.w600,
-                fontFamily: 'Montserrat',
+                fontFamily: 'Nunito',
               ),
             ),
           ],
@@ -117,7 +117,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   style: TextStyle(
                     fontSize: size.width * 0.04,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Nunito',
                   ),
                 ),
                 SizedBox(height: size.height * 0.01),
@@ -127,7 +127,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   style: TextStyle(
                     fontSize: size.width * 0.03,
                     fontWeight: FontWeight.w400,
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Nunito',
                   ),
                 ),
                 SizedBox(height: size.height * 0.03),
@@ -178,7 +178,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                             style: TextStyle(
                               fontSize: size.width * 0.04,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Nunito',
                             ),
                           ),
                         ),
@@ -192,7 +192,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                     context.loc.returnToLoginPage,
                     style: TextStyle(
                       fontSize: size.width * 0.03,
-                      fontFamily: 'Montserrat',
+                      fontFamily: 'Nunito',
                       color: AppColors.primaryColor,
                     ),
                   ),
