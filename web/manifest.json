@@ -1,6 +1,6 @@
 {
-    "name": "tabkha_app",
-    "short_name": "tabkha_app",
+    "name": "Tabkha",
+    "short_name": "Tabkha",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

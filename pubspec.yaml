@@ -34,6 +34,7 @@ dependencies:
 
 
 dev_dependencies:
+  flutter_native_splash: ^2.4.6
   flutter_test:
     sdk: flutter
 
@@ -83,3 +84,12 @@ flutter:
   #         weight: 700
   #
 
+# Splash screen: `dart run flutter_native_splash:create` regenerates it for Android, iOS and the web.
+flutter_native_splash:
+  color: "#FFF8EC"
+  image: assets/images/tabkha_logo_1.png
+  android_12:
+    color: "#FFF8EC"
+    image: assets/images/tabkha_logo_1.png
+  web: true
+  fullscreen: false
