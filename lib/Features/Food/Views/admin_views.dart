@@ -217,6 +217,18 @@ class _AdminOrderTile extends ConsumerWidget {
         SizedBox(height: 6),
         Text(order.lines.map((l) => '${l.quantity}× ${l.name}').join(', '),
             maxLines: 2, overflow: TextOverflow.ellipsis, style: bodyStyle.copyWith(fontSize: 12.5, color: ink)),
+        if (order.note.isNotEmpty) ...[
+          SizedBox(height: 6),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            decoration: BoxDecoration(color: Color(0xFFFFF1D6), borderRadius: BorderRadius.circular(10)),
+            child: Row(children: [
+              Icon(Icons.sticky_note_2_outlined, size: 16, color: Color(0xFF8A5A00)),
+              SizedBox(width: 6),
+              Expanded(child: Text(order.note, style: bodyStyle.copyWith(fontSize: 12.5, color: ink))),
+            ]),
+          ),
+        ],
         if (next != null) ...[
           SizedBox(height: 10),
           Row(children: [

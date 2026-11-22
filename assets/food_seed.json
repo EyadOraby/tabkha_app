@@ -1,1 +1,653 @@
-{"restaurants": [{"id": "r1", "name": "Koshary El Tahrir", "cuisine": "Egyptian", "image": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg", "deliveryMinutes": 25, "deliveryFee": 10, "area": "Downtown", "isOpen": true, "status": "approved"}, {"id": "r2", "name": "Nonna's Kitchen", "cuisine": "Italian", "image": "https://www.themealdb.com/images/media/meals/1549542877.jpg", "deliveryMinutes": 35, "deliveryFee": 15, "area": "Zamalek", "isOpen": true, "status": "approved"}, {"id": "r3", "name": "Sakura House", "cuisine": "Japanese", "image": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg", "deliveryMinutes": 40, "deliveryFee": 20, "area": "New Cairo", "isOpen": true, "status": "approved"}, {"id": "r4", "name": "Istanbul Grill", "cuisine": "Turkish", "image": "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg", "deliveryMinutes": 30, "deliveryFee": 15, "area": "Sheikh Zayed", "isOpen": true, "status": "approved"}, {"id": "r5", "name": "Bangkok Street", "cuisine": "Thai", "image": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg", "deliveryMinutes": 45, "deliveryFee": 20, "area": "Maadi", "isOpen": false, "status": "approved"}, {"id": "r6", "name": "Sugar Lab", "cuisine": "Desserts", "image": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg", "deliveryMinutes": 20, "deliveryFee": 10, "area": "Heliopolis", "isOpen": true, "status": "approved"}, {"id": "r7", "name": "Green Bowl", "cuisine": "Healthy", "image": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg", "deliveryMinutes": 30, "deliveryFee": 15, "area": "Dokki", "isOpen": true, "status": "pending"}], "menu": [{"id": "r1-m0", "restaurantId": "r1", "name": "Egyptian Fatteh", "description": "Egyptian favourite, freshly made to order.", "price": 160.0, "image": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg/medium", "section": "Popular", "available": true}, {"id": "r1-m1", "restaurantId": "r1", "name": "Feteer Meshaltet", "description": "Egyptian favourite, freshly made to order.", "price": 95.0, "image": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg/medium", "section": "Popular", "available": true}, {"id": "r1-m2", "restaurantId": "r1", "name": "Ful Medames", "description": "Egyptian favourite, freshly made to order.", "price": 185.0, "image": "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg/medium", "section": "Popular", "available": true}, {"id": "r1-m3", "restaurantId": "r1", "name": "Koshari", "description": "Egyptian favourite, freshly made to order.", "price": 65.0, "image": "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg/medium", "section": "Mains", "available": true}, {"id": "r1-m4", "restaurantId": "r1", "name": "Mulukhiyah", "description": "Egyptian favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg/medium", "section": "Mains", "available": true}, {"id": "r1-m5", "restaurantId": "r1", "name": "Shakshuka", "description": "Egyptian favourite, freshly made to order.", "price": 240.0, "image": "https://www.themealdb.com/images/media/meals/g373701551450225.jpg/medium", "section": "Mains", "available": true}, {"id": "r1-m6", "restaurantId": "r1", "name": "Shawarma", "description": "Egyptian favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r1-m7", "restaurantId": "r1", "name": "Tamiya", "description": "Egyptian favourite, freshly made to order.", "price": 160.0, "image": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r2-m0", "restaurantId": "r2", "name": "Budino Di Ricotta", "description": "Italian favourite, freshly made to order.", "price": 65.0, "image": "https://www.themealdb.com/images/media/meals/1549542877.jpg/medium", "section": "Popular", "available": true}, {"id": "r2-m1", "restaurantId": "r2", "name": "Chicken Alfredo Primavera", "description": "Italian favourite, freshly made to order.", "price": 240.0, "image": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg/medium", "section": "Popular", "available": true}, {"id": "r2-m2", "restaurantId": "r2", "name": "Chilli prawn linguine", "description": "Italian favourite, freshly made to order.", "price": 120.0, "image": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg/medium", "section": "Popular", "available": true}, {"id": "r2-m3", "restaurantId": "r2", "name": "Fettuccine Alfredo", "description": "Italian favourite, freshly made to order.", "price": 65.0, "image": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg/medium", "section": "Mains", "available": true}, {"id": "r2-m4", "restaurantId": "r2", "name": "Fettucine alfredo", "description": "Italian favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg/medium", "section": "Mains", "available": true}, {"id": "r2-m5", "restaurantId": "r2", "name": "Lasagne", "description": "Italian favourite, freshly made to order.", "price": 185.0, "image": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg/medium", "section": "Mains", "available": true}, {"id": "r2-m6", "restaurantId": "r2", "name": "Mediterranean Pasta Salad", "description": "Italian favourite, freshly made to order.", "price": 185.0, "image": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r2-m7", "restaurantId": "r2", "name": "Osso Buco alla Milanese", "description": "Italian favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r2-m8", "restaurantId": "r2", "name": "Pilchard puttanesca", "description": "Italian favourite, freshly made to order.", "price": 120.0, "image": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg/medium", "section": "Sides & more", "available": false}, {"id": "r3-m0", "restaurantId": "r3", "name": "Chicken Karaage", "description": "Japanese favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg/medium", "section": "Popular", "available": true}, {"id": "r3-m1", "restaurantId": "r3", "name": "Honey Teriyaki Salmon", "description": "Japanese favourite, freshly made to order.", "price": 240.0, "image": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg/medium", "section": "Popular", "available": true}, {"id": "r3-m2", "restaurantId": "r3", "name": "Japanese gohan rice", "description": "Japanese favourite, freshly made to order.", "price": 185.0, "image": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg/medium", "section": "Popular", "available": true}, {"id": "r3-m3", "restaurantId": "r3", "name": "Japanese Katsudon", "description": "Japanese favourite, freshly made to order.", "price": 65.0, "image": "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg/medium", "section": "Mains", "available": true}, {"id": "r3-m4", "restaurantId": "r3", "name": "Katsu Chicken curry", "description": "Japanese favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg/medium", "section": "Mains", "available": true}, {"id": "r3-m5", "restaurantId": "r3", "name": "Sushi", "description": "Japanese favourite, freshly made to order.", "price": 120.0, "image": "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg/medium", "section": "Mains", "available": true}, {"id": "r3-m6", "restaurantId": "r3", "name": "Teriyaki Chicken Casserole", "description": "Japanese favourite, freshly made to order.", "price": 65.0, "image": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r3-m7", "restaurantId": "r3", "name": "Tonkatsu pork", "description": "Japanese favourite, freshly made to order.", "price": 185.0, "image": "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r3-m8", "restaurantId": "r3", "name": "Yaki Udon", "description": "Japanese favourite, freshly made to order.", "price": 65.0, "image": "https://www.themealdb.com/images/media/meals/wrustq1511475474.jpg/medium", "section": "Sides & more", "available": false}, {"id": "r4-m0", "restaurantId": "r4", "name": "Adana kebab", "description": "Turkish favourite, freshly made to order.", "price": 120.0, "image": "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg/medium", "section": "Popular", "available": true}, {"id": "r4-m1", "restaurantId": "r4", "name": "Apricot & Turkish delight mess", "description": "Turkish favourite, freshly made to order.", "price": 65.0, "image": "https://www.themealdb.com/images/media/meals/p277uc1764109195.jpg/medium", "section": "Popular", "available": true}, {"id": "r4-m2", "restaurantId": "r4", "name": "Aubergine & hummus grills", "description": "Turkish favourite, freshly made to order.", "price": 240.0, "image": "https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg/medium", "section": "Popular", "available": true}, {"id": "r4-m3", "restaurantId": "r4", "name": "Aubergine couscous salad", "description": "Turkish favourite, freshly made to order.", "price": 95.0, "image": "https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg/medium", "section": "Mains", "available": true}, {"id": "r4-m4", "restaurantId": "r4", "name": "Baklava with spiced nuts, ricotta & chocolate", "description": "Turkish favourite, freshly made to order.", "price": 145.0, "image": "https://www.themealdb.com/images/media/meals/ytme8t1764111401.jpg/medium", "section": "Mains", "available": true}, {"id": "r4-m5", "restaurantId": "r4", "name": "Cacik", "description": "Turkish favourite, freshly made to order.", "price": 185.0, "image": "https://www.themealdb.com/images/media/meals/16zbeu1763789342.jpg/medium", "section": "Mains", "available": true}, {"id": "r4-m6", "restaurantId": "r4", "name": "Chicken wings with cumin, lemon & garlic", "description": "Turkish favourite, freshly made to order.", "price": 95.0, "image": "https://www.themealdb.com/images/media/meals/4hzyvq1763792564.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r4-m7", "restaurantId": "r4", "name": "Chilli ginger lamb chops", "description": "Turkish favourite, freshly made to order.", "price": 240.0, "image": "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r4-m8", "restaurantId": "r4", "name": "Corba", "description": "Turkish favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg/medium", "section": "Sides & more", "available": false}, {"id": "r5-m0", "restaurantId": "r5", "name": "Drunken noodles (pad kee mao)", "description": "Thai favourite, freshly made to order.", "price": 145.0, "image": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg/medium", "section": "Popular", "available": true}, {"id": "r5-m1", "restaurantId": "r5", "name": "Lemongrass beef stew with noodles", "description": "Thai favourite, freshly made to order.", "price": 240.0, "image": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg/medium", "section": "Popular", "available": true}, {"id": "r5-m2", "restaurantId": "r5", "name": "Massaman Beef curry", "description": "Thai favourite, freshly made to order.", "price": 95.0, "image": "https://www.themealdb.com/images/media/meals/tvttqv1504640475.jpg/medium", "section": "Popular", "available": true}, {"id": "r5-m3", "restaurantId": "r5", "name": "Pad See Ew", "description": "Thai favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/uuuspp1468263334.jpg/medium", "section": "Mains", "available": true}, {"id": "r5-m4", "restaurantId": "r5", "name": "Pad Thai", "description": "Thai favourite, freshly made to order.", "price": 120.0, "image": "https://www.themealdb.com/images/media/meals/rg9ze01763479093.jpg/medium", "section": "Mains", "available": true}, {"id": "r5-m5", "restaurantId": "r5", "name": "Panang chicken curry (kaeng panang gai)", "description": "Thai favourite, freshly made to order.", "price": 160.0, "image": "https://www.themealdb.com/images/media/meals/0dhtwr1763371444.jpg/medium", "section": "Mains", "available": true}, {"id": "r5-m6", "restaurantId": "r5", "name": "Prawn stir-fry", "description": "Thai favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/96lt871763480970.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r5-m7", "restaurantId": "r5", "name": "Red curry chicken kebabs", "description": "Thai favourite, freshly made to order.", "price": 240.0, "image": "https://www.themealdb.com/images/media/meals/prjve31763486864.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r5-m8", "restaurantId": "r5", "name": "Spicy Thai prawn noodles", "description": "Thai favourite, freshly made to order.", "price": 85.0, "image": "https://www.themealdb.com/images/media/meals/568t931763584227.jpg/medium", "section": "Sides & more", "available": false}, {"id": "r6-m0", "restaurantId": "r6", "name": "Æbleskiver", "description": "Desserts favourite, freshly made to order.", "price": 35.0, "image": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg/medium", "section": "Popular", "available": true}, {"id": "r6-m1", "restaurantId": "r6", "name": "Alfajores", "description": "Desserts favourite, freshly made to order.", "price": 90.0, "image": "https://www.themealdb.com/images/media/meals/a4kgf21763075288.jpg/medium", "section": "Popular", "available": true}, {"id": "r6-m2", "restaurantId": "r6", "name": "Anzac biscuits", "description": "Desserts favourite, freshly made to order.", "price": 180.0, "image": "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg/medium", "section": "Popular", "available": true}, {"id": "r6-m3", "restaurantId": "r6", "name": "Apam balik", "description": "Desserts favourite, freshly made to order.", "price": 210.0, "image": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg/medium", "section": "Mains", "available": true}, {"id": "r6-m4", "restaurantId": "r6", "name": "Apple & Blackberry Crumble", "description": "Desserts favourite, freshly made to order.", "price": 155.0, "image": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg/medium", "section": "Mains", "available": true}, {"id": "r6-m5", "restaurantId": "r6", "name": "Apple cake", "description": "Desserts favourite, freshly made to order.", "price": 130.0, "image": "https://www.themealdb.com/images/media/meals/c0gmo31766594751.jpg/medium", "section": "Mains", "available": true}, {"id": "r6-m6", "restaurantId": "r6", "name": "Apple Frangipan Tart", "description": "Desserts favourite, freshly made to order.", "price": 180.0, "image": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r6-m7", "restaurantId": "r6", "name": "Apple Pie", "description": "Desserts favourite, freshly made to order.", "price": 180.0, "image": "https://www.themealdb.com/images/media/meals/stnxzp1784835840.jpg/medium", "section": "Sides & more", "available": true}, {"id": "r6-m8", "restaurantId": "r6", "name": "Apple pie pops", "description": "Desserts favourite, freshly made to order.", "price": 130.0, "image": "https://www.themealdb.com/images/media/meals/ax643t1784731109.jpg/medium", "section": "Sides & more", "available": false}, {"id": "r7-m0", "restaurantId": "r7", "name": "Air fryer patatas bravas", "description": "Light, fresh and plant-based.", "price": 110.0, "image": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg/medium", "section": "Popular", "available": true}, {"id": "r7-m1", "restaurantId": "r7", "name": "Algerian Flafla (Bell Pepper Salad)", "description": "Light, fresh and plant-based.", "price": 110.0, "image": "https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg/medium", "section": "Popular", "available": true}, {"id": "r7-m2", "restaurantId": "r7", "name": "Aubergine & hummus grills", "description": "Light, fresh and plant-based.", "price": 110.0, "image": "https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg/medium", "section": "Popular", "available": true}, {"id": "r7-m3", "restaurantId": "r7", "name": "Aubergine couscous salad", "description": "Light, fresh and plant-based.", "price": 110.0, "image": "https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg/medium", "section": "Popular", "available": true}]}
+{
+ "restaurants": [
+  {
+   "id": "r1",
+   "name": "Koshary El Tahrir",
+   "cuisine": "Egyptian",
+   "image": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg",
+   "deliveryMinutes": 25,
+   "deliveryFee": 10,
+   "area": "Downtown",
+   "isOpen": true,
+   "status": "approved"
+  },
+  {
+   "id": "r2",
+   "name": "Nonna's Kitchen",
+   "cuisine": "Italian",
+   "image": "https://www.themealdb.com/images/media/meals/1549542877.jpg",
+   "deliveryMinutes": 35,
+   "deliveryFee": 15,
+   "area": "Zamalek",
+   "isOpen": true,
+   "status": "approved"
+  },
+  {
+   "id": "r3",
+   "name": "Sakura House",
+   "cuisine": "Japanese",
+   "image": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg",
+   "deliveryMinutes": 40,
+   "deliveryFee": 20,
+   "area": "New Cairo",
+   "isOpen": true,
+   "status": "approved"
+  },
+  {
+   "id": "r4",
+   "name": "Istanbul Grill",
+   "cuisine": "Turkish",
+   "image": "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
+   "deliveryMinutes": 30,
+   "deliveryFee": 15,
+   "area": "Sheikh Zayed",
+   "isOpen": true,
+   "status": "approved"
+  },
+  {
+   "id": "r5",
+   "name": "Bangkok Street",
+   "cuisine": "Thai",
+   "image": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg",
+   "deliveryMinutes": 45,
+   "deliveryFee": 20,
+   "area": "Maadi",
+   "isOpen": false,
+   "status": "approved"
+  },
+  {
+   "id": "r6",
+   "name": "Sugar Lab",
+   "cuisine": "Desserts",
+   "image": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg",
+   "deliveryMinutes": 20,
+   "deliveryFee": 10,
+   "area": "Heliopolis",
+   "isOpen": true,
+   "status": "approved"
+  },
+  {
+   "id": "r7",
+   "name": "Green Bowl",
+   "cuisine": "Healthy",
+   "image": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg",
+   "deliveryMinutes": 30,
+   "deliveryFee": 15,
+   "area": "Dokki",
+   "isOpen": true,
+   "status": "pending"
+  }
+ ],
+ "menu": [
+  {
+   "id": "r1-m0",
+   "restaurantId": "r1",
+   "name": "Egyptian Fatteh",
+   "description": "Crisp bread, rice and tender beef layered with garlic vinegar tomato sauce.",
+   "price": 160.0,
+   "image": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r1-m1",
+   "restaurantId": "r1",
+   "name": "Feteer Meshaltet",
+   "description": "Flaky layered pastry baked with ghee, served with honey and old cheese.",
+   "price": 95.0,
+   "image": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r1-m2",
+   "restaurantId": "r1",
+   "name": "Ful Medames",
+   "description": "Slow-cooked fava beans with cumin, olive oil and lemon, served with baladi bread.",
+   "price": 185.0,
+   "image": "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r1-m3",
+   "restaurantId": "r1",
+   "name": "Koshari",
+   "description": "Rice, lentils, pasta and chickpeas with spicy tomato sauce and crispy onions.",
+   "price": 65.0,
+   "image": "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r1-m4",
+   "restaurantId": "r1",
+   "name": "Mulukhiyah",
+   "description": "Jute-leaf stew with garlic and coriander, served with rice and chicken.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r1-m5",
+   "restaurantId": "r1",
+   "name": "Shakshuka",
+   "description": "Eggs poached in a spiced tomato and pepper sauce, with bread for dipping.",
+   "price": 240.0,
+   "image": "https://www.themealdb.com/images/media/meals/g373701551450225.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r1-m6",
+   "restaurantId": "r1",
+   "name": "Shawarma",
+   "description": "Marinated chicken shawarma wrapped with garlic toum, pickles and fries.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r1-m7",
+   "restaurantId": "r1",
+   "name": "Tamiya",
+   "description": "Egyptian falafel made with fava beans and fresh herbs, fried to order.",
+   "price": 160.0,
+   "image": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r2-m0",
+   "restaurantId": "r2",
+   "name": "Budino Di Ricotta",
+   "description": "Light baked ricotta pudding with lemon zest.",
+   "price": 65.0,
+   "image": "https://www.themealdb.com/images/media/meals/1549542877.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r2-m1",
+   "restaurantId": "r2",
+   "name": "Chicken Alfredo Primavera",
+   "description": "Fettuccine with chicken and spring vegetables in a parmesan cream sauce.",
+   "price": 240.0,
+   "image": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r2-m2",
+   "restaurantId": "r2",
+   "name": "Chilli prawn linguine",
+   "description": "Linguine with prawns, chilli, garlic, cherry tomatoes and parsley.",
+   "price": 120.0,
+   "image": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r2-m3",
+   "restaurantId": "r2",
+   "name": "Fettuccine Alfredo",
+   "description": "Fresh fettuccine in butter, cream and parmesan.",
+   "price": 65.0,
+   "image": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r2-m4",
+   "restaurantId": "r2",
+   "name": "Fettucine alfredo",
+   "description": "Silky fettuccine tossed in butter and parmesan with black pepper.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r2-m5",
+   "restaurantId": "r2",
+   "name": "Lasagne",
+   "description": "Layers of pasta, slow-cooked beef ragu, béchamel and parmesan.",
+   "price": 185.0,
+   "image": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r2-m6",
+   "restaurantId": "r2",
+   "name": "Mediterranean Pasta Salad",
+   "description": "Pasta with olives, tomatoes, feta and a herb vinaigrette.",
+   "price": 185.0,
+   "image": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r2-m7",
+   "restaurantId": "r2",
+   "name": "Osso Buco alla Milanese",
+   "description": "Braised veal shank with gremolata and saffron risotto.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r2-m8",
+   "restaurantId": "r2",
+   "name": "Pilchard puttanesca",
+   "description": "Spaghetti with pilchards, olives, capers and chilli tomato sauce.",
+   "price": 120.0,
+   "image": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg/medium",
+   "section": "Sides & more",
+   "available": false
+  },
+  {
+   "id": "r3-m0",
+   "restaurantId": "r3",
+   "name": "Chicken Karaage",
+   "description": "Ginger-soy marinated fried chicken with lemon and Japanese mayo.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r3-m1",
+   "restaurantId": "r3",
+   "name": "Honey Teriyaki Salmon",
+   "description": "Glazed salmon fillet with honey teriyaki, rice and greens.",
+   "price": 240.0,
+   "image": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r3-m2",
+   "restaurantId": "r3",
+   "name": "Japanese gohan rice",
+   "description": "Steamed short-grain rice, the way it is served at home in Japan.",
+   "price": 185.0,
+   "image": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r3-m3",
+   "restaurantId": "r3",
+   "name": "Japanese Katsudon",
+   "description": "Crisp pork cutlet simmered with egg and onion over rice.",
+   "price": 65.0,
+   "image": "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r3-m4",
+   "restaurantId": "r3",
+   "name": "Katsu Chicken curry",
+   "description": "Panko chicken cutlet with a mild Japanese curry sauce and rice.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r3-m5",
+   "restaurantId": "r3",
+   "name": "Sushi",
+   "description": "Assorted maki and nigiri with pickled ginger, wasabi and soy.",
+   "price": 120.0,
+   "image": "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r3-m6",
+   "restaurantId": "r3",
+   "name": "Teriyaki Chicken Casserole",
+   "description": "Baked teriyaki chicken with vegetables over rice.",
+   "price": 65.0,
+   "image": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r3-m7",
+   "restaurantId": "r3",
+   "name": "Tonkatsu pork",
+   "description": "Panko-crumbed pork cutlet with shredded cabbage and tonkatsu sauce.",
+   "price": 185.0,
+   "image": "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r3-m8",
+   "restaurantId": "r3",
+   "name": "Yaki Udon",
+   "description": "Thick udon noodles stir-fried with vegetables and a savoury sauce.",
+   "price": 65.0,
+   "image": "https://www.themealdb.com/images/media/meals/wrustq1511475474.jpg/medium",
+   "section": "Sides & more",
+   "available": false
+  },
+  {
+   "id": "r4-m0",
+   "restaurantId": "r4",
+   "name": "Adana kebab",
+   "description": "Hand-minced lamb on a skewer, charcoal grilled, with flatbread, sumac onions and grilled pepper.",
+   "price": 120.0,
+   "image": "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r4-m1",
+   "restaurantId": "r4",
+   "name": "Apricot & Turkish delight mess",
+   "description": "Meringue, cream, apricots and rosewater Turkish delight.",
+   "price": 65.0,
+   "image": "https://www.themealdb.com/images/media/meals/p277uc1764109195.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r4-m2",
+   "restaurantId": "r4",
+   "name": "Aubergine & hummus grills",
+   "description": "Grilled aubergine on creamy hummus with pomegranate and herbs.",
+   "price": 240.0,
+   "image": "https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r4-m3",
+   "restaurantId": "r4",
+   "name": "Aubergine couscous salad",
+   "description": "Roast aubergine, herby couscous, chickpeas and lemon dressing.",
+   "price": 95.0,
+   "image": "https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r4-m4",
+   "restaurantId": "r4",
+   "name": "Baklava with spiced nuts, ricotta & chocolate",
+   "description": "Crisp filo layered with spiced nuts, ricotta and dark chocolate, soaked in honey syrup.",
+   "price": 145.0,
+   "image": "https://www.themealdb.com/images/media/meals/ytme8t1764111401.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r4-m5",
+   "restaurantId": "r4",
+   "name": "Cacik",
+   "description": "Cool yoghurt with cucumber, garlic, mint and olive oil.",
+   "price": 185.0,
+   "image": "https://www.themealdb.com/images/media/meals/16zbeu1763789342.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r4-m6",
+   "restaurantId": "r4",
+   "name": "Chicken wings with cumin, lemon & garlic",
+   "description": "Oven-roasted wings with cumin, lemon and plenty of garlic.",
+   "price": 95.0,
+   "image": "https://www.themealdb.com/images/media/meals/4hzyvq1763792564.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r4-m7",
+   "restaurantId": "r4",
+   "name": "Chilli ginger lamb chops",
+   "description": "Grilled lamb chops glazed with chilli, ginger and honey.",
+   "price": 240.0,
+   "image": "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r4-m8",
+   "restaurantId": "r4",
+   "name": "Corba",
+   "description": "Turkish red lentil soup with mint butter and a squeeze of lemon.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg/medium",
+   "section": "Sides & more",
+   "available": false
+  },
+  {
+   "id": "r5-m0",
+   "restaurantId": "r5",
+   "name": "Drunken noodles (pad kee mao)",
+   "description": "Wide rice noodles stir-fried with chilli, garlic and holy basil.",
+   "price": 145.0,
+   "image": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r5-m1",
+   "restaurantId": "r5",
+   "name": "Lemongrass beef stew with noodles",
+   "description": "Beef slow-cooked with lemongrass and star anise, over rice noodles.",
+   "price": 240.0,
+   "image": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r5-m2",
+   "restaurantId": "r5",
+   "name": "Massaman Beef curry",
+   "description": "Rich, mild Thai curry with beef, potatoes and roasted peanuts.",
+   "price": 95.0,
+   "image": "https://www.themealdb.com/images/media/meals/tvttqv1504640475.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r5-m3",
+   "restaurantId": "r5",
+   "name": "Pad See Ew",
+   "description": "Wide rice noodles with chicken, Chinese broccoli and sweet soy.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/uuuspp1468263334.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r5-m4",
+   "restaurantId": "r5",
+   "name": "Pad Thai",
+   "description": "Rice noodles with prawns, egg, tamarind, peanuts and lime.",
+   "price": 120.0,
+   "image": "https://www.themealdb.com/images/media/meals/rg9ze01763479093.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r5-m5",
+   "restaurantId": "r5",
+   "name": "Panang chicken curry (kaeng panang gai)",
+   "description": "Chicken in a thick, fragrant panang curry with lime leaves.",
+   "price": 160.0,
+   "image": "https://www.themealdb.com/images/media/meals/0dhtwr1763371444.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r5-m6",
+   "restaurantId": "r5",
+   "name": "Prawn stir-fry",
+   "description": "Prawns wok-fried with crunchy vegetables, garlic and soy.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/96lt871763480970.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r5-m7",
+   "restaurantId": "r5",
+   "name": "Red curry chicken kebabs",
+   "description": "Chicken skewers marinated in red curry and coconut, grilled.",
+   "price": 240.0,
+   "image": "https://www.themealdb.com/images/media/meals/prjve31763486864.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r5-m8",
+   "restaurantId": "r5",
+   "name": "Spicy Thai prawn noodles",
+   "description": "Prawns and egg noodles in a hot, sour, fragrant Thai sauce.",
+   "price": 85.0,
+   "image": "https://www.themealdb.com/images/media/meals/568t931763584227.jpg/medium",
+   "section": "Sides & more",
+   "available": false
+  },
+  {
+   "id": "r6-m0",
+   "restaurantId": "r6",
+   "name": "Æbleskiver",
+   "description": "Fluffy Danish pancake balls dusted with icing sugar, served with jam.",
+   "price": 35.0,
+   "image": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r6-m1",
+   "restaurantId": "r6",
+   "name": "Alfajores",
+   "description": "Soft shortbread cookies sandwiched with dulce de leche and rolled in coconut.",
+   "price": 90.0,
+   "image": "https://www.themealdb.com/images/media/meals/a4kgf21763075288.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r6-m2",
+   "restaurantId": "r6",
+   "name": "Anzac biscuits",
+   "description": "Chewy oat and golden-syrup biscuits with toasted coconut.",
+   "price": 180.0,
+   "image": "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r6-m3",
+   "restaurantId": "r6",
+   "name": "Apam balik",
+   "description": "Malaysian folded pancake with crushed peanuts, sugar and sweetcorn.",
+   "price": 210.0,
+   "image": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r6-m4",
+   "restaurantId": "r6",
+   "name": "Apple & Blackberry Crumble",
+   "description": "Baked apples and blackberries under a buttery oat crumble, served warm.",
+   "price": 155.0,
+   "image": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r6-m5",
+   "restaurantId": "r6",
+   "name": "Apple cake",
+   "description": "Moist apple sponge with a crunchy cinnamon-sugar top.",
+   "price": 130.0,
+   "image": "https://www.themealdb.com/images/media/meals/c0gmo31766594751.jpg/medium",
+   "section": "Mains",
+   "available": true
+  },
+  {
+   "id": "r6-m6",
+   "restaurantId": "r6",
+   "name": "Apple Frangipan Tart",
+   "description": "Sliced apples baked into almond frangipane on crisp pastry.",
+   "price": 180.0,
+   "image": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r6-m7",
+   "restaurantId": "r6",
+   "name": "Apple Pie",
+   "description": "Cinnamon apples in a golden double crust.",
+   "price": 180.0,
+   "image": "https://www.themealdb.com/images/media/meals/stnxzp1784835840.jpg/medium",
+   "section": "Sides & more",
+   "available": true
+  },
+  {
+   "id": "r6-m8",
+   "restaurantId": "r6",
+   "name": "Apple pie pops",
+   "description": "Bite-size apple pies on a stick, sprinkled with cinnamon sugar.",
+   "price": 130.0,
+   "image": "https://www.themealdb.com/images/media/meals/ax643t1784731109.jpg/medium",
+   "section": "Sides & more",
+   "available": false
+  },
+  {
+   "id": "r7-m0",
+   "restaurantId": "r7",
+   "name": "Air fryer patatas bravas",
+   "description": "Crisp potatoes with a smoky tomato sauce and garlic aioli.",
+   "price": 110.0,
+   "image": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r7-m1",
+   "restaurantId": "r7",
+   "name": "Algerian Flafla (Bell Pepper Salad)",
+   "description": "Roasted peppers and tomatoes with garlic, cumin and olive oil.",
+   "price": 110.0,
+   "image": "https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r7-m2",
+   "restaurantId": "r7",
+   "name": "Aubergine & hummus grills",
+   "description": "Grilled aubergine on creamy hummus with pomegranate and herbs.",
+   "price": 110.0,
+   "image": "https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg/medium",
+   "section": "Popular",
+   "available": true
+  },
+  {
+   "id": "r7-m3",
+   "restaurantId": "r7",
+   "name": "Aubergine couscous salad",
+   "description": "Roast aubergine, herby couscous, chickpeas and lemon dressing.",
+   "price": 110.0,
+   "image": "https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg/medium",
+   "section": "Popular",
+   "available": true
+  }
+ ]
+}

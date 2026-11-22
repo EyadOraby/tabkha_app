@@ -355,7 +355,9 @@ class _MenuRow extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final canOrder = item.available && open;
+    final inBasket = ref.watch(foodProvider).cart.where((l) => l.item.id == item.id).firstOrNull?.quantity ?? 0;
     return Panel(
+      onTap: canOrder ? () => showDishSheet(context, item) : null,
       padding: EdgeInsets.all(10),
       child: Opacity(
         opacity: item.available ? 1 : 0.5,
@@ -376,6 +378,23 @@ class _MenuRow extends ConsumerWidget {
                 ],
               ),
             ),
+            if (inBasket > 0)
+              Column(mainAxisSize: MainAxisSize.min, children: [
+                IconButton(
+                  tooltip: context.t('One more'),
+                  visualDensity: VisualDensity.compact,
+                  onPressed: () => ref.read(foodProvider.notifier).setQuantity(item.id, inBasket + 1),
+                  icon: Icon(Icons.add_circle, color: green),
+                ),
+                Text('$inBasket', style: titleStyle.copyWith(fontSize: 15)),
+                IconButton(
+                  tooltip: context.t('One less'),
+                  visualDensity: VisualDensity.compact,
+                  onPressed: () => ref.read(foodProvider.notifier).setQuantity(item.id, inBasket - 1),
+                  icon: Icon(Icons.remove_circle_outline, color: inkMuted),
+                ),
+              ])
+            else
             IconButton.filled(
               tooltip: 'Add ${item.name}',
               style: IconButton.styleFrom(backgroundColor: green),
@@ -445,10 +464,12 @@ class CheckoutView extends ConsumerStatefulWidget {
 
 class _CheckoutViewState extends ConsumerState<CheckoutView> {
   final _address = TextEditingController(text: '6 Ibn Malek St, Giza');
+  final _note = TextEditingController();
 
   @override
   void dispose() {
     _address.dispose();
+    _note.dispose();
     super.dispose();
   }
 
@@ -467,8 +488,26 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
           : ListView(
               padding: EdgeInsets.fromLTRB(20, 4, 20, 24),
               children: [
-                if (r != null) Text('${context.t('From')} ${r.name}', style: bodyStyle.copyWith(fontWeight: FontWeight.w700)),
-                SizedBox(height: 12),
+                if (r != null)
+                  Row(children: [
+                    Expanded(child: Text('${context.t('From')} ${r.name}', style: bodyStyle.copyWith(fontWeight: FontWeight.w700))),
+                    TextButton.icon(
+                      onPressed: () => Navigator.of(context).maybePop(),
+                      icon: Icon(Icons.add_rounded, size: 18),
+                      label: Text(context.t('Add more')),
+                    ),
+                  ]),
+                if (r != null)
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 4),
+                    child: Row(children: [
+                      Icon(Icons.schedule_rounded, size: 16, color: inkMuted),
+                      SizedBox(width: 6),
+                      Text('${context.t('Arrives in about')} ${r.deliveryMinutes}–${r.deliveryMinutes + 10} ${context.t('min')}',
+                          style: bodyStyle.copyWith(fontSize: 13)),
+                    ]),
+                  ),
+                SizedBox(height: 8),
                 for (final l in food.cart)
                   Padding(
                     padding: EdgeInsets.only(bottom: 10),
@@ -504,6 +543,19 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
                   ),
                 ),
+                SectionTitle(context.t('Note for the kitchen')),
+                TextField(
+                  controller: _note,
+                  maxLines: 2,
+                  maxLength: 140,
+                  decoration: InputDecoration(
+                    hintText: context.t('Allergies, no onions, extra spicy…'),
+                    prefixIcon: Icon(Icons.sticky_note_2_outlined),
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
+                  ),
+                ),
                 SectionTitle(context.t('Summary')),
                 Panel(
                   child: Column(children: [
@@ -532,7 +584,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
                   ),
                   onPressed: () {
-                    final order = ref.read(foodProvider.notifier).placeOrder(address: _address.text.trim());
+                    final order = ref.read(foodProvider.notifier).placeOrder(address: _address.text.trim(), note: _note.text);
                     if (order == null) return;
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => OrderTrackingView(orderId: order.id)));
                   },
@@ -636,6 +688,11 @@ class OrderCard extends ConsumerWidget {
                 ]),
               ),
             Text('${context.t('Delivering to')} ${order.address}', style: bodyStyle.copyWith(fontSize: 12.5)),
+            if (order.note.isNotEmpty)
+              Padding(
+                padding: EdgeInsets.only(top: 4),
+                child: Text('${context.t('Note')}: ${order.note}', style: bodyStyle.copyWith(fontSize: 12.5, color: ink)),
+              ),
           ],
           if (order.status.canCancel || (order.status == OrderStatus.delivered && !order.reviewed)) ...[
             SizedBox(height: 12),
@@ -750,4 +807,95 @@ class RoleSwitcher extends ConsumerWidget {
 double _side(BuildContext context) {
   final w = MediaQuery.sizeOf(context).width;
   return w > 1000 ? (w - 960) / 2 : 20;
+}
+
+/// A dish up close: photo, description, quantity and one button to add.
+Future<void> showDishSheet(BuildContext context, MenuItem item) => showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: cream,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
+      builder: (_) => _DishSheet(item: item),
+    );
+
+class _DishSheet extends ConsumerStatefulWidget {
+  const _DishSheet({required this.item});
+  final MenuItem item;
+
+  @override
+  ConsumerState<_DishSheet> createState() => _DishSheetState();
+}
+
+class _DishSheetState extends ConsumerState<_DishSheet> {
+  int _qty = 1;
+
+  void _add() {
+    final store = ref.read(foodProvider.notifier);
+    final before = ref.read(foodProvider);
+    final sameKitchen = before.cartRestaurantId == widget.item.restaurantId;
+    final had = sameKitchen ? (before.cart.where((l) => l.item.id == widget.item.id).firstOrNull?.quantity ?? 0) : 0;
+    store.addToCart(widget.item);
+    store.setQuantity(widget.item.id, had + _qty);
+    Navigator.of(context).pop();
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text(!sameKitchen && before.cart.isNotEmpty
+            ? '${context.t('Started a new basket with')} ${widget.item.name}'
+            : '${context.t('Added')} ${widget.item.name}'),
+      ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final item = widget.item;
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(20, 12, 20, 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(width: 40, height: 4, decoration: BoxDecoration(color: Color(0xFFE4D8C4), borderRadius: BorderRadius.circular(2))),
+            ),
+            SizedBox(height: 14),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: SizedBox(height: 190, width: double.infinity, child: NetImage(item.image, radius: 20)),
+            ),
+            SizedBox(height: 14),
+            Text(item.name, style: titleStyle.copyWith(fontSize: 22)),
+            SizedBox(height: 6),
+            Text(item.description, style: bodyStyle.copyWith(fontSize: 14.5, height: 1.45)),
+            SizedBox(height: 10),
+            Text(egp(item.price), style: titleStyle.copyWith(fontSize: 18, color: green)),
+            SizedBox(height: 16),
+            Row(children: [
+              IconButton.outlined(
+                tooltip: context.t('One less'),
+                onPressed: _qty > 1 ? () => setState(() => _qty--) : null,
+                icon: Icon(Icons.remove_rounded),
+              ),
+              SizedBox(width: 44, child: Text('$_qty', textAlign: TextAlign.center, style: titleStyle.copyWith(fontSize: 20))),
+              IconButton.outlined(
+                tooltip: context.t('One more'),
+                onPressed: () => setState(() => _qty++),
+                icon: Icon(Icons.add_rounded),
+              ),
+              SizedBox(width: 14),
+              Expanded(
+                child: FilledButton(
+                  style: FilledButton.styleFrom(backgroundColor: green, minimumSize: Size.fromHeight(54)),
+                  onPressed: _add,
+                  child: Text('${context.t('Add')} $_qty · ${egp(item.price * _qty)}'),
+                ),
+              ),
+            ]),
+          ],
+        ),
+      ),
+    );
+  }
 }

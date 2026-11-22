@@ -114,11 +114,11 @@ class MenuItem {
     this.available = true,
   });
 
-  MenuItem copyWith({bool? available, double? price}) => MenuItem(
+  MenuItem copyWith({bool? available, double? price, String? description}) => MenuItem(
         id: id,
         restaurantId: restaurantId,
         name: name,
-        description: description,
+        description: description ?? this.description,
         price: price ?? this.price,
         image: image,
         section: section,
@@ -179,6 +179,9 @@ class FoodOrder {
   final DateTime createdAt;
   final bool reviewed;
 
+  /// A note for the kitchen, e.g. "No onions, please".
+  final String note;
+
   const FoodOrder({
     required this.id,
     required this.restaurantId,
@@ -189,6 +192,7 @@ class FoodOrder {
     required this.status,
     required this.createdAt,
     this.reviewed = false,
+    this.note = '',
   });
 
   double get subtotal => lines.fold(0, (sum, l) => sum + l.total);
@@ -205,6 +209,7 @@ class FoodOrder {
         status: status ?? this.status,
         createdAt: createdAt,
         reviewed: reviewed ?? this.reviewed,
+        note: note,
       );
 
   Map<String, dynamic> toJson() => {
@@ -217,6 +222,7 @@ class FoodOrder {
         'status': status.name,
         'createdAt': createdAt.toIso8601String(),
         'reviewed': reviewed,
+        if (note.isNotEmpty) 'note': note,
       };
 
   factory FoodOrder.fromJson(Map json) => FoodOrder(
@@ -229,6 +235,7 @@ class FoodOrder {
         status: OrderStatus.values.byName(json['status'] as String),
         createdAt: DateTime.parse(json['createdAt'] as String),
         reviewed: json['reviewed'] as bool? ?? false,
+        note: json['note'] as String? ?? '',
       );
 }
 

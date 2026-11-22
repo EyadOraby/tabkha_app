@@ -132,4 +132,32 @@ void main() {
     expect(OrderStatus.accepted.canCancel, isTrue);
     expect(averageRating(const []), 0);
   });
+
+  test('an order keeps the note for the kitchen, and it survives saving', () async {
+    final (c, storage) = await setUpStore();
+    final store = c.read(foodProvider.notifier);
+    store.addToCart(item(c, 'a'));
+    final order = store.placeOrder(address: 'Giza', note: '  No onions, please ')!;
+    expect(order.note, 'No onions, please');
+    final restored = FoodOrder.fromJson(order.toJson());
+    expect(restored.note, 'No onions, please');
+  });
+
+  test('placeholder descriptions in an older save are refreshed from the seed', () async {
+    final storage = MemoryFoodStorage();
+    final (c0, _) = await setUpStore();
+    final old = c0.read(foodProvider);
+    final stale = old.copyWith(menu: [
+      for (final m in old.menu) m.copyWith(description: 'Egyptian favourite, freshly made to order.'),
+    ]);
+    storage.write(jsonEncode(stale.toJson()));
+    final c = ProviderContainer(overrides: [
+      foodStorageProvider.overrideWithValue(storage),
+      foodSeedProvider.overrideWithValue(() async => jsonEncode(_seed)),
+    ]);
+    c.read(foodProvider);
+    await Future<void>.delayed(Duration.zero);
+    await Future<void>.delayed(Duration.zero);
+    expect(c.read(foodProvider).menu.first.description, isNot(contains('favourite, freshly made')));
+  });
 }

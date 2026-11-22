@@ -145,6 +145,7 @@ class FoodStore extends Notifier<FoodState> {
     final saved = _storage.read();
     if (saved != null) {
       final json = jsonDecode(saved) as Map<String, dynamic>;
+      Future.microtask(_refreshDescriptions);
       return FoodState(
         restaurants: (json['restaurants'] as List).map((e) => Restaurant.fromJson(e as Map)).toList(),
         menu: (json['menu'] as List).map((e) => MenuItem.fromJson(e as Map)).toList(),
@@ -171,6 +172,20 @@ class FoodStore extends Notifier<FoodState> {
       role: state.role,
       loaded: true,
     ));
+  }
+
+  /// Older saves have placeholder dish descriptions ("… favourite, freshly
+  /// made to order."). Replaces only those with the current seed's text, so
+  /// anything a restaurant admin changed is kept.
+  Future<void> _refreshDescriptions() async {
+    bool placeholder(String d) => d.endsWith('favourite, freshly made to order.') || d == 'Light, fresh and plant-based.';
+    if (!state.menu.any((m) => placeholder(m.description))) return;
+    final json = jsonDecode(await ref.read(foodSeedProvider)()) as Map<String, dynamic>;
+    final fresh = {for (final m in (json['menu'] as List).map((e) => MenuItem.fromJson(e as Map))) m.id: m.description};
+    _set(state.copyWith(menu: [
+      for (final m in state.menu)
+        placeholder(m.description) && fresh[m.id] != null ? m.copyWith(description: fresh[m.id]) : m,
+    ]));
   }
 
   void _set(FoodState next) {
@@ -206,7 +221,7 @@ class FoodStore extends Notifier<FoodState> {
     state = state.copyWith(cart: lines, cartRestaurantId: () => lines.isEmpty ? null : state.cartRestaurantId);
   }
 
-  FoodOrder? placeOrder({required String address}) {
+  FoodOrder? placeOrder({required String address, String note = ''}) {
     final rid = state.cartRestaurantId;
     if (rid == null || state.cart.isEmpty) return null;
     final now = clock();
@@ -219,6 +234,7 @@ class FoodStore extends Notifier<FoodState> {
       deliveryFee: state.cartDeliveryFee,
       status: OrderStatus.placed,
       createdAt: now,
+      note: note.trim(),
     );
     _set(state.copyWith(orders: [order, ...state.orders], cart: const [], cartRestaurantId: () => null));
     return order;
