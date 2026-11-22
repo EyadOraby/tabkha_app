@@ -6,10 +6,11 @@ import 'package:tabkha_app/Features/Authentication/Views/onboarding_view.dart';
 import 'package:tabkha_app/Features/Home/Views/app_shell.dart';
 import 'package:tabkha_app/Features/Recipes/Models/meal.dart';
 import 'package:tabkha_app/Features/Recipes/Views/meal_details_view.dart';
-import 'package:tabkha_app/Features/Food/Views/admin_views.dart';
-import 'package:tabkha_app/Features/Food/Views/courier_view.dart';
+import 'package:tabkha_app/Features/Food/Views/admin_views.dart' deferred as admin;
+import 'package:tabkha_app/Features/Food/Views/courier_view.dart' deferred as courier;
 import 'package:tabkha_app/Features/Food/Views/customer_views.dart';
 import 'package:tabkha_app/Features/Home/Views/home_view.dart';
+import 'package:tabkha_app/deferred_view.dart';
 
 /// Screens the web demo can open directly, e.g. `?screen=home` or
 /// `?screen=recipe&id=52772`.
@@ -34,11 +35,11 @@ Widget? deepLinkedScreen([Uri? url]) {
     case 'restaurant':
       return RestaurantView(restaurantId: params['id'] ?? 'r1');
     case 'admin':
-      return const RestaurantAdminView();
+      return DeferredView(load: admin.loadLibrary, builder: () => admin.RestaurantAdminView());
     case 'courier':
-      return const CourierView();
+      return DeferredView(load: courier.loadLibrary, builder: () => courier.CourierView());
     case 'superadmin':
-      return const SuperAdminView();
+      return DeferredView(load: admin.loadLibrary, builder: () => admin.SuperAdminView());
     case 'recipe':
       final id = params['id'];
       if (id == null || id.isEmpty) return null;

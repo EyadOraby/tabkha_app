@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:tabkha_app/Features/Food/Views/courier_view.dart';
+import 'package:tabkha_app/Features/Food/Views/courier_view.dart' deferred as courier;
 import 'package:tabkha_app/Features/Food/food_strings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabkha_app/Features/Food/Models/food_models.dart';
 import 'package:tabkha_app/Features/Food/Views/account_view.dart';
-import 'package:tabkha_app/Features/Food/Views/admin_views.dart';
+import 'package:tabkha_app/Features/Food/Views/admin_views.dart' deferred as admin;
 import 'package:tabkha_app/Features/Food/Views/customer_views.dart';
 import 'package:tabkha_app/Features/Food/Widgets/food_ui.dart';
 import 'package:tabkha_app/Features/Food/food_store.dart';
 import 'package:tabkha_app/Features/Home/Views/home_view.dart';
+import 'package:tabkha_app/deferred_view.dart';
 
 /// The signed-in app. Customers get food delivery and recipes; restaurant
 /// and platform admins get their consoles.
@@ -23,9 +24,10 @@ class HomeView extends ConsumerWidget {
     final role = ref.watch(foodProvider.select((s) => s.role));
     return switch (role) {
       AppRole.customer => CustomerShell(initialTab: initialTab),
-      AppRole.restaurantAdmin => RestaurantAdminView(),
-      AppRole.courier => CourierView(),
-      AppRole.superAdmin => SuperAdminView(),
+      // The consoles load on demand, so customers never download them.
+      AppRole.restaurantAdmin => DeferredView(load: admin.loadLibrary, builder: () => admin.RestaurantAdminView()),
+      AppRole.courier => DeferredView(load: courier.loadLibrary, builder: () => courier.CourierView()),
+      AppRole.superAdmin => DeferredView(load: admin.loadLibrary, builder: () => admin.SuperAdminView()),
     };
   }
 }
